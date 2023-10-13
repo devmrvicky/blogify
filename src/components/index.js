@@ -16,6 +16,8 @@ import ActionBtn from "./ActionBtn";
 import Author from "./author/Author";
 import PostOpts from "./PostOpts";
 import MenuItem from "./MenuItem";
+import RTE from "./RTE";
+import PostCtrlBtn from "./PostCtrlBtn";
 
 export {
   Header,
@@ -36,4 +38,6 @@ export {
   Author,
   PostOpts,
   MenuItem,
+  RTE,
+  PostCtrlBtn,
 };

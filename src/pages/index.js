@@ -5,6 +5,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import IndividualPost from "./IndividualPost";
 import WritePost from "./WritePost";
+import EditPost from "./EditPost";
 import Dashboard from "./dashboard/Dashboard";
 import Overview from "./dashboard/Overview";
 import Collections from "./dashboard/Collections";
@@ -18,6 +19,7 @@ export {
   Login,
   IndividualPost,
   WritePost,
+  EditPost,
   Dashboard,
   Overview,
   Collections,

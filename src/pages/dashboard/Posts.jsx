@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import dbService from "../../appwrite/databaseService";
 import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "react-loader-spinner";
-import { PostCard } from "../../components";
+import { PostCard, PostCtrlBtn } from "../../components";
 import { addPostsById, replaceAllPosts } from "../../features";
 import {
   eyeHide,
@@ -11,50 +11,23 @@ import {
   penIcon,
   trashIcon,
 } from "../../assets";
+import { WritePost } from "..";
+import { useNavigate } from "react-router-dom";
 
 const Posts = () => {
   const [loading, setLoading] = useState(true);
   const [btnAction, setBtnAction] = useState({
-    btnName: "",
-    postId: "",
-    working: false,
+    delete: false,
   });
   const { userData } = useSelector((store) => store.auth);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { postsById, allPosts } = useSelector((store) => store.posts);
-
-  const postBtns = [
-    {
-      name: "hide",
-      icon: eyeIcon,
-      active: true,
-    },
-    {
-      name: "Unhide",
-      icon: eyeHide,
-      active: true,
-    },
-    {
-      name: "Open post",
-      icon: openLinkIcon,
-      active: true,
-    },
-    {
-      name: "Edit",
-      icon: penIcon,
-      active: true,
-    },
-    {
-      name: "Delete",
-      icon: trashIcon,
-      active: true,
-    },
-  ];
 
   const deletePost = async (postId) => {
     try {
       // delete post logic
-      setBtnAction((prev) => ({ ...prev, working: true }));
+      setBtnAction((prev) => ({ ...prev, delete: true }));
       const res = await dbService.deletePost(postId);
       if (res) {
         dispatch(replaceAllPosts(res.documents));
@@ -62,15 +35,12 @@ const Posts = () => {
     } catch (error) {
       console.log(error.message);
     } finally {
-      setBtnAction({ btnName: "", postId: "", working: false });
+      setBtnAction({ delete: false });
     }
   };
 
-  const handleClick = ({ btnName, postId }) => {
-    setBtnAction({ btnName, postId });
-    if (btnName === "Delete") {
-      deletePost(postId);
-    }
+  const goToEditPage = ({ authorId, postSlug }) => {
+    navigate(`/${authorId}/${postSlug}/edit`);
   };
 
   useEffect(() => {
@@ -115,35 +85,17 @@ const Posts = () => {
             >
               <PostCard {...post} authorPost={true} />
               <div className="post-btns w-full flex-1 flex items-center gap-2">
-                {postBtns.map((btn) => (
-                  <button
-                    key={btn.name}
-                    className="flex gap-2 items-center px-4 py-2 rounded-full bg-zinc-50 active:scale-95 transition-all active:bg-zinc-200"
-                    onClick={() =>
-                      handleClick({ btnName: btn.name, postId: post.$id })
-                    }
-                  >
-                    {!btnAction.working &&
-                    btn.name !== btnAction.btnName &&
-                    post.$id !== btnAction.postId ? (
-                      <span>{btn.icon}</span>
-                    ) : (
-                      <Oval
-                        height={20}
-                        width={20}
-                        color="#4fa94d"
-                        wrapperStyle={{}}
-                        wrapperClass=""
-                        visible={true}
-                        ariaLabel="oval-loading"
-                        secondaryColor="#4fa94d"
-                        strokeWidth={2}
-                        strokeWidthSecondary={2}
-                      />
-                    )}
-                    <span className="text-sm">{btn.name}</span>
-                  </button>
-                ))}
+                <PostCtrlBtn
+                  btnName="Edit post"
+                  icon={penIcon}
+                  onClick={() => goToEditPage(post)}
+                />
+                <PostCtrlBtn
+                  btnName="Delete"
+                  icon={trashIcon}
+                  btnAction={btnAction.delete}
+                  onClick={() => deletePost(post.$id)}
+                />
               </div>
             </div>
           ))

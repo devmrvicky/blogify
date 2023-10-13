@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { bell, drawing } from "../../assets";
 
+// const useStore = () => useSelector((store) => store.posts);
+
 const Nav = () => {
   const { status } = useSelector((store) => store.auth);
 

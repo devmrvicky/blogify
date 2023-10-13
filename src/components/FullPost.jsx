@@ -1,5 +1,6 @@
 import React from "react";
 import { ActionBtns, Author, Container } from ".";
+import parse from "html-react-parser";
 
 const FullPost = ({
   title,
@@ -19,8 +20,8 @@ const FullPost = ({
           $createdAt={$createdAt}
         />
         <ActionBtns />
-        <article className="py-10 font-['source-serif-pro'] text-[22px] text-zinc-700 leading-9">
-          {article}
+        <article className="py-10 font-['source-serif-pro'] leading-9">
+          <div className="browser-css">{parse(article)}</div>
         </article>
         <div className="flex items-center gap-2 my-4">
           {categories?.map((category) => (

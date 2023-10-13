@@ -62,6 +62,24 @@ class DbService {
       return false;
     }
   }
+
+  // update post
+  async updatePost(postId, updatedPost) {
+    try {
+      await this.databases.updateDocument(
+        env.appwriteDatabaseId,
+        env.appwriteCollectionId,
+        postId,
+        updatedPost
+      );
+      return this.databases.listDocuments(
+        env.appwriteDatabaseId,
+        env.appwriteCollectionId
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 }
 
 const dbService = new DbService();

@@ -15,6 +15,7 @@ import {
   Collections,
   Contact,
   Dashboard,
+  EditPost,
   Home,
   IndividualPost,
   Login,
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
       <Route path="/contact-us" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/:authorId/:postSlug/edit" element={<EditPost />} />
       <Route path="/:authorId/:postSlug" element={<IndividualPost />} />
       <Route path="/:authorId" element={<Dashboard />}>
         <Route path="/:authorId" element={<Overview />} />
