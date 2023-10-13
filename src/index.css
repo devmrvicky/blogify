@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'gt-super-regular';
+  src: url(./font/GT-Super-Display-Regular-Trial.otf);
+}
