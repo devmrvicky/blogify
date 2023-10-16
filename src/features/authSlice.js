@@ -4,6 +4,7 @@ const initialState = {
   status: false,
   userData: null,
   menuOpen: false,
+  loginPopup: false,
 };
 
 const authSlice = createSlice({
@@ -16,15 +17,22 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       state.status = false;
+      state.userData = null;
+      state.menuOpen = false;
+      state.loginPopup = false;
     },
     toggleMenu: (state, action) => {
       state.menuOpen = action.payload;
     },
-    updateData: (status, action) => {
-      status.userData = action.payload;
+    updateData: (state, action) => {
+      state.userData = action.payload;
+    },
+    showLoginPopup: (state, action) => {
+      state.loginPopup = action.payload;
     },
   },
 });
 
-export const { login, logout, toggleMenu, updateData } = authSlice.actions;
+export const { login, logout, toggleMenu, updateData, showLoginPopup } =
+  authSlice.actions;
 export default authSlice.reducer;

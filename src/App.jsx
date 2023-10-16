@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Loading, Header } from "./components";
+import { Loading, Header, Popup } from "./components";
 import { Outlet, useNavigate } from "react-router-dom";
 import authService from "./appwrite/authService";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, replaceAllPosts, toggleMenu } from "./features";
+import {
+  addAllPostReact,
+  login,
+  logout,
+  replaceAllPosts,
+  showLoginPopup,
+  toggleMenu,
+} from "./features";
 import dbService from "./appwrite/databaseService";
 import { Watch } from "react-loader-spinner";
 
@@ -11,26 +18,34 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const isWorking = useSelector((store) => store.loading.loading);
-  const { userData } = useSelector((store) => store.auth);
+  const { userData, loginPopup } = useSelector((store) => store.auth);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    dispatch(showLoginPopup(false));
     (async function () {
       try {
         const userData = await authService.getUser();
         if (userData) {
           dispatch(login(userData));
-          const allDocs = await dbService.getAllDocs();
-          // console.log(allDocs);
-          if (allDocs) {
-            dispatch(replaceAllPosts(allDocs.documents));
-          }
         } else {
           dispatch(logout());
           navigate("/");
         }
         dispatch(toggleMenu(false));
+        // todo : in future I will get all documents by using queries
+        const allDocs = await dbService.getAllDocs();
+        if (allDocs) {
+          dispatch(replaceAllPosts(allDocs.documents));
+          // const { $id } = userData;
+          // const postsReacts = await dbService.getPostReactById({
+          //   $id,
+          // });
+          // if (postsReacts) {
+          //   dispatch(addAllPostReact(postsReacts.documents));
+          // }
+        }
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -45,6 +60,7 @@ const App = () => {
       <main className="w-full">
         <Outlet />
         {isWorking && <Loading />}
+        {loginPopup && <Popup />}
       </main>
       {/* <Footer /> */}
     </div>

@@ -18,6 +18,7 @@ import PostOpts from "./PostOpts";
 import MenuItem from "./MenuItem";
 import RTE from "./RTE";
 import PostCtrlBtn from "./PostCtrlBtn";
+import Popup from "./Popup";
 
 export {
   Header,
@@ -40,4 +41,5 @@ export {
   MenuItem,
   RTE,
   PostCtrlBtn,
+  Popup,
 };

@@ -3,6 +3,7 @@ import authReducer, {
   logout,
   toggleMenu,
   updateData,
+  showLoginPopup,
 } from "./authSlice";
 import loadingReducer, { start, end } from "./loadingSlice";
 import editorReducer, { open, close } from "./editorSlice";
@@ -28,4 +29,5 @@ export {
   setSlug,
   replaceAllPosts,
   addPostsById,
+  showLoginPopup,
 };

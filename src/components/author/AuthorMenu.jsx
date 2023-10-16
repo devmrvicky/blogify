@@ -29,7 +29,7 @@ const AuthorMenu = () => {
     },
     {
       item: "Dashboard",
-      path: `/${userData.$id}`,
+      path: `/${userData?.$id}`,
       status: status,
       icon: dashboard,
     },
@@ -43,7 +43,6 @@ const AuthorMenu = () => {
     try {
       dispatch(start());
       const deleteSession = await authService.logout();
-      console.log(deleteSession);
       if (deleteSession) {
         dispatch(authLogout());
         navigate("/");

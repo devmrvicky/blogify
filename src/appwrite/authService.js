@@ -1,4 +1,4 @@
-import { Client, Account } from "appwrite";
+import { Client, Account, ID } from "appwrite";
 import env from "../env/env";
 
 class AuthService {
@@ -10,7 +10,7 @@ class AuthService {
   }
 
   // create account
-  async signup({ id, email, password, name }) {
+  async signup({ id = ID.unique(), email, password, name }) {
     try {
       const userData = await this.account.create(id, email, password, name);
       if (userData) {
@@ -64,6 +64,15 @@ class AuthService {
       return await this.account.updateName(name);
     } catch (error) {
       console.log(error.message);
+    }
+  }
+
+  // get preference
+  async getUserPrefs() {
+    try {
+      return await this.account.getPrefs();
+    } catch (error) {
+      return error.message;
     }
   }
 

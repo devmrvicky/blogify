@@ -60,7 +60,7 @@ const initialState = {
   // ],
   allPosts: [],
   slug: "",
-  postsById: []
+  postsById: [],
 };
 
 const postSlice = createSlice({
@@ -102,10 +102,11 @@ const postSlice = createSlice({
       state.slug = action.payload;
     },
     addPostsById: (state, action) => {
-      state.postsById = action.payload
-    }
+      state.postsById = action.payload;
+    },
   },
 });
 
-export const { add, setSlug, replaceAllPosts, addPostsById } = postSlice.actions;
+export const { add, setSlug, replaceAllPosts, addPostsById } =
+  postSlice.actions;
 export default postSlice.reducer;

@@ -3,6 +3,7 @@ import { FaUser } from "react-icons/fa";
 import { bookmark, sample } from "../assets";
 import { Link } from "react-router-dom";
 import useFormateDistanceDate from "../formatDistance";
+import parse from "html-react-parser";
 
 const PostCard = ({
   title,
@@ -31,9 +32,10 @@ const PostCard = ({
             </div>
           )}
           <h2 className="text-xl font-semibold py-2">{title}</h2>
-          <p className="text-zinc-500 py-2 text-sm">
-            {authorPost ? article.slice(0, 100) : article.slice(0, 200)}...
-          </p>
+          <div className="text-zinc-500 py-2 text-sm">
+            {parse(authorPost ? article.slice(0, 100) : article.slice(0, 200))}
+            ...
+          </div>
           <div className="flex items-center gap-2 mt-auto text-xs text-zinc-500">
             <p>{date}</p>
             {!authorPost && (

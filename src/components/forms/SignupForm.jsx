@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { ID } from "appwrite";
 import { login as authLogin, start, end } from "../../features";
 import { Input, Button, Container } from "..";
+import { useEffect } from "react";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -28,6 +29,17 @@ const SignupForm = () => {
     }
   };
 
+  useEffect(() => {
+    (async function () {
+      try {
+        const res = await authService.getUserPrefs();
+        console.log(res);
+      } catch (error) {
+        console.log(error.message);
+      }
+    })();
+  }, []);
+
   return (
     <div>
       <Container maxWidth="max-w-md">
@@ -39,9 +51,15 @@ const SignupForm = () => {
           <p>Enter your detail below</p>
           <Input
             type="text"
-            label="name"
+            label="Name"
             placeholder="Enter name"
             {...register("name", { required: true })}
+          />
+          <Input
+            type="text"
+            label="User id"
+            placeholder="userid"
+            {...register("userId", { required: true })}
           />
           <Input
             type="email"
@@ -51,7 +69,7 @@ const SignupForm = () => {
           />
           <Input
             type="password"
-            label="password"
+            label="Password"
             placeholder="********"
             {...register("password", { required: true })}
           />

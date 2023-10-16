@@ -9,7 +9,10 @@ const FullPost = ({
   readTime,
   $createdAt,
   categories,
+  authorId,
+  $id,
 }) => {
+  // console.log(authorId, $id);
   return (
     <div className="py-10">
       <Container maxWidth="max-w-3xl">
@@ -19,9 +22,9 @@ const FullPost = ({
           readTime={readTime}
           $createdAt={$createdAt}
         />
-        <ActionBtns />
-        <article className="py-10 font-['source-serif-pro'] leading-9">
-          <div className="browser-css">{parse(article)}</div>
+        <ActionBtns postId={$id} authorId={authorId} />
+        <article className="py-10 font-['source-serif-pro'] leading-9 text-[22px]">
+          <div className="">{parse(article)}</div>
         </article>
         <div className="flex items-center gap-2 my-4">
           {categories?.map((category) => (
@@ -33,7 +36,7 @@ const FullPost = ({
             </span>
           ))}
         </div>
-        <ActionBtns />
+        <ActionBtns postId={$id} authorId={authorId} />
         {/* article end here */}
         {/* author full profile */}
         {/* recent post from current author */}

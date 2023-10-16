@@ -54,10 +54,7 @@ class DbService {
         env.appwriteCollectionId,
         postId
       );
-      return this.databases.listDocuments(
-        env.appwriteDatabaseId,
-        env.appwriteCollectionId
-      );
+      return this.getAllDocs();
     } catch (error) {
       return false;
     }
@@ -72,10 +69,7 @@ class DbService {
         postId,
         updatedPost
       );
-      return this.databases.listDocuments(
-        env.appwriteDatabaseId,
-        env.appwriteCollectionId
-      );
+      return this.getAllDocs();
     } catch (error) {
       console.log(error.message);
     }
