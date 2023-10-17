@@ -61,6 +61,8 @@ const initialState = {
   allPosts: [],
   slug: "",
   postsById: [],
+  currentPost: {},
+  isClapsPageOpen: false,
 };
 
 const postSlice = createSlice({
@@ -104,9 +106,32 @@ const postSlice = createSlice({
     addPostsById: (state, action) => {
       state.postsById = action.payload;
     },
+    setCurrentPost: (state, action) => {
+      state.currentPost = action.payload;
+    },
+    addClaps: (state, action) => {
+      // console.log(action.payload);
+      state.currentPost = {
+        ...state.currentPost,
+        claps: state.currentPost.claps + action.payload.claps,
+        whoClaps: Array.from(
+          new Set([...state.currentPost.whoClaps, action.payload.whoClap])
+        ),
+      };
+    },
+    toggleClapsPage: (state, action) => {
+      state.isClapsPageOpen = action.payload;
+    },
   },
 });
 
-export const { add, setSlug, replaceAllPosts, addPostsById } =
-  postSlice.actions;
+export const {
+  add,
+  setSlug,
+  replaceAllPosts,
+  addPostsById,
+  setCurrentPost,
+  addClaps,
+  toggleClapsPage,
+} = postSlice.actions;
 export default postSlice.reducer;

@@ -19,6 +19,7 @@ import MenuItem from "./MenuItem";
 import RTE from "./RTE";
 import PostCtrlBtn from "./PostCtrlBtn";
 import Popup from "./Popup";
+import ClapsPage from "./ClapsPage";
 
 export {
   Header,
@@ -42,4 +43,5 @@ export {
   RTE,
   PostCtrlBtn,
   Popup,
+  ClapsPage,
 };

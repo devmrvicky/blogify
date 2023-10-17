@@ -45,6 +45,7 @@ const WritePost = ({ post }) => {
         authorName: name,
         readTime: calculateReadingTime(data.article),
         postSlug,
+        claps: 0,
       };
       if (post) {
         const updatedPosts = await dbService.updatePost(post.$id, prepareData);

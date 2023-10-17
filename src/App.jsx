@@ -4,7 +4,6 @@ import { Outlet, useNavigate } from "react-router-dom";
 import authService from "./appwrite/authService";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addAllPostReact,
   login,
   logout,
   replaceAllPosts,

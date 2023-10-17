@@ -12,6 +12,9 @@ import postReducer, {
   setSlug,
   replaceAllPosts,
   addPostsById,
+  setCurrentPost,
+  addClaps,
+  toggleClapsPage,
 } from "./postSlice";
 
 export {
@@ -30,4 +33,7 @@ export {
   replaceAllPosts,
   addPostsById,
   showLoginPopup,
+  setCurrentPost,
+  addClaps,
+  toggleClapsPage,
 };

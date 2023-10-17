@@ -1,19 +1,30 @@
-import { FullPost } from "../components";
+import { ClapsPage, FullPost } from "../components";
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentPost } from "../features";
+import { useEffect } from "react";
 
 const IndividualPost = () => {
   const { authorId, postSlug } = useParams();
-  const posts = useSelector((store) => store.posts.allPosts);
+  const { allPosts, isClapsPageOpen } = useSelector((store) => store.posts);
 
-  const post = posts.find(
+  const post = allPosts.find(
     (post) => post.authorId === authorId && post.postSlug === postSlug
   );
+  // console.log(post);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCurrentPost(post));
+  }, []);
 
   return (
     <div>
       {post ? (
-        <FullPost {...post} />
+        <>
+          <FullPost {...post} />
+          {isClapsPageOpen && <ClapsPage />}
+        </>
       ) : (
         <div className="text-center py-10">
           <p className="text-2xl font-semibold italic">Post could not find.</p>

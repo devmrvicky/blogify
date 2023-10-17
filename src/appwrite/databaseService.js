@@ -69,7 +69,7 @@ class DbService {
         postId,
         updatedPost
       );
-      return this.getAllDocs();
+      return await this.getAllDocs();
     } catch (error) {
       console.log(error.message);
     }

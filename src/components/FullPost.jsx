@@ -11,6 +11,8 @@ const FullPost = ({
   categories,
   authorId,
   $id,
+  claps,
+  whoClaps,
 }) => {
   // console.log(authorId, $id);
   return (
@@ -22,7 +24,7 @@ const FullPost = ({
           readTime={readTime}
           $createdAt={$createdAt}
         />
-        <ActionBtns postId={$id} authorId={authorId} />
+        <ActionBtns claps={claps} />
         <article className="py-10 font-['source-serif-pro'] leading-9 text-[22px]">
           <div className="">{parse(article)}</div>
         </article>
@@ -36,7 +38,7 @@ const FullPost = ({
             </span>
           ))}
         </div>
-        <ActionBtns postId={$id} authorId={authorId} />
+        <ActionBtns claps={claps} />
         {/* article end here */}
         {/* author full profile */}
         {/* recent post from current author */}
