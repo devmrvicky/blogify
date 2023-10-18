@@ -15,6 +15,8 @@ import postReducer, {
   setCurrentPost,
   addClaps,
   toggleActionPage,
+  addAllResponds,
+  addRespond,
 } from "./postSlice";
 
 export {
@@ -36,4 +38,6 @@ export {
   setCurrentPost,
   addClaps,
   toggleActionPage,
+  addAllResponds,
+  addRespond,
 };

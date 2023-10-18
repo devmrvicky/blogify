@@ -74,6 +74,34 @@ class DbService {
       console.log(error.message);
     }
   }
+
+  // create responds
+  async createResponds(data, uniqueId = ID.unique()) {
+    try {
+      return await this.databases.createDocument(
+        env.appwriteDatabaseId,
+        env.appwriteRespondCollectionId,
+        uniqueId,
+        { ...data }
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  // get all responds regarding to post
+  async getAllRespondsByPostId({ $id }) {
+    // console.log($id);
+    try {
+      return await this.databases.listDocuments(
+        env.appwriteDatabaseId,
+        env.appwriteRespondCollectionId,
+        [Query.equal("postId", $id)]
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 }
 
 const dbService = new DbService();

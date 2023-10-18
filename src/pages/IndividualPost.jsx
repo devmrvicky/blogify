@@ -1,8 +1,9 @@
 import { ClapsPage, FullPost, RespondPage } from "../components";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentPost } from "../features";
+import { addAllResponds, setCurrentPost } from "../features";
 import { useEffect } from "react";
+import dbService from "../appwrite/databaseService";
 
 const IndividualPost = () => {
   const { authorId, postSlug } = useParams();
@@ -16,6 +17,18 @@ const IndividualPost = () => {
 
   useEffect(() => {
     dispatch(setCurrentPost(post));
+    (async function () {
+      try {
+        dispatch(addAllResponds([]));
+        const rsp = await dbService.getAllRespondsByPostId(post);
+        // console.log(rsp);
+        if (rsp) {
+          dispatch(addAllResponds(rsp.documents));
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    })();
   }, []);
 
   return (

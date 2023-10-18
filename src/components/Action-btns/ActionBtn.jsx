@@ -9,6 +9,7 @@ const ActionBtn = ({
   onClick,
   updated = true,
   handleClapsPage,
+  responds,
 }) => {
   return (
     <div
@@ -25,6 +26,7 @@ const ActionBtn = ({
       </button>
       <span className="claps-count" onClick={handleClapsPage}>
         {claps !== 0 && claps}
+        {responds !== 0 && responds}
       </span>
     </div>
   );

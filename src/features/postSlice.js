@@ -1,63 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  // allPosts: [
-  //   {
-  //     authorId: "author1",
-  //     postId: "1",
-  //     title: "A Jew, A Muslim, and Israel: Cracks in the Wall",
-  //     article:
-  //       "In light of the conflict in Israel, I’m sharing my essay on visiting Israel during the Gaza Crisis in 2009 and the revelation I had",
-  //     createdAt: "Oct 10",
-  //     readTime: "5 min read",
-  //     categories: ["Culture"],
-  //     FeaturedImg: "imgId",
-  //   },
-  //   {
-  //     authorId: "author1",
-  //     postId: "2",
-  //     title: "A Jew, A Muslim, and Israel: Cracks in the Wall",
-  //     article:
-  //       "In light of the conflict in Israel, I’m sharing my essay on visiting Israel during the Gaza Crisis in 2009 and the revelation I had",
-  //     createdAt: "Oct 10",
-  //     readTime: "5 min read",
-  //     categories: ["Culture"],
-  //     FeaturedImg: "imgId",
-  //   },
-  //   {
-  //     authorId: "author1",
-  //     postId: "3",
-  //     title: "A Jew, A Muslim, and Israel: Cracks in the Wall",
-  //     article:
-  //       "In light of the conflict in Israel, I’m sharing my essay on visiting Israel during the Gaza Crisis in 2009 and the revelation I had",
-  //     createdAt: "Oct 10",
-  //     readTime: "5 min read",
-  //     categories: ["Culture"],
-  //     FeaturedImg: "imgId",
-  //   },
-  //   {
-  //     authorId: "author1",
-  //     postId: "4",
-  //     title: "A Jew, A Muslim, and Israel: Cracks in the Wall",
-  //     article:
-  //       "In light of the conflict in Israel, I’m sharing my essay on visiting Israel during the Gaza Crisis in 2009 and the revelation I had",
-  //     createdAt: "Oct 10",
-  //     readTime: "5 min read",
-  //     categories: ["Culture"],
-  //     FeaturedImg: "imgId",
-  //   },
-  //   {
-  //     authorId: "author1",
-  //     postId: "5",
-  //     title: "A Jew, A Muslim, and Israel: Cracks in the Wall",
-  //     article:
-  //       "In light of the conflict in Israel, I’m sharing my essay on visiting Israel during the Gaza Crisis in 2009 and the revelation I had",
-  //     createdAt: "Oct 10",
-  //     readTime: "5 min read",
-  //     categories: ["Culture"],
-  //     FeaturedImg: "imgId",
-  //   },
-  // ],
   allPosts: [],
   slug: "",
   postsById: [],
@@ -66,6 +9,19 @@ const initialState = {
     clapsPage: false,
     respondPage: false,
   },
+  currentResponds: [
+    // {
+    //   postId: "6529e93164f7ff55a54e",
+    //   uniqueId: "unique_id",
+    //   reply: false,
+    //   userId: "user_id",
+    //   userName: "User name",
+    //   respond: `I want to ask a lot of things.
+    //   First, how much time does it take to write this descriptive article(it is awesome)?
+    //   Second, how much money you make with Pinterest, etsy, etc. ? I have seen your Pinterest account it is so professional...`,
+    //   claps: 20,
+    // },
+  ],
 };
 
 const postSlice = createSlice({
@@ -126,14 +82,25 @@ const postSlice = createSlice({
       reducer: (state, action) => {
         state.isPageOpen = action.payload;
       },
-      prepare: ({ clapsPage = false, respondPage = false }) => {
+      prepare: ({
+        clapsPage = false,
+        respondPage = false,
+        responding = false,
+      }) => {
         return {
           payload: {
             clapsPage,
             respondPage,
+            responding,
           },
         };
       },
+    },
+    addAllResponds: (state, action) => {
+      state.currentResponds = action.payload;
+    },
+    addRespond: (state, action) => {
+      state.currentResponds.push(action.payload);
     },
   },
 });
@@ -146,5 +113,7 @@ export const {
   setCurrentPost,
   addClaps,
   toggleActionPage,
+  addAllResponds,
+  addRespond,
 } = postSlice.actions;
 export default postSlice.reducer;
