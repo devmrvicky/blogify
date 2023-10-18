@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { ActionBtn } from ".";
+import { ActionBtn } from "..";
 import { useDispatch, useSelector } from "react-redux";
-import { addClaps, replaceAllPosts, toggleClapsPage } from "../features";
-import dbService from "../appwrite/databaseService";
+import { addClaps, replaceAllPosts, toggleClapsPage } from "../../features";
+import dbService from "../../appwrite/databaseService";
 
-const ActionBtns = () => {
+const ClapsBtn = () => {
   const [updated, setUpdated] = useState(true);
   const [claps, setClaps] = useState(0);
   const [clapped, setClapped] = useState(false);
@@ -49,19 +49,16 @@ const ActionBtns = () => {
   }, [whoClaps.length]);
 
   return (
-    <div className="flex items-center gap-3 border-b border-t py-4 px-2">
-      <ActionBtn
-        actionType="claps"
-        claps={claps}
-        clapped={clapped}
-        whoClaps={whoClaps}
-        onClick={handleClaps}
-        updated={updated}
-        handleClapsPage={() => dispatch(toggleClapsPage(true))}
-      />
-      <ActionBtn actionType="comment" actionCount="20" />
-    </div>
+    <ActionBtn
+      actionType="claps"
+      claps={claps}
+      clapped={clapped}
+      whoClaps={whoClaps}
+      onClick={handleClaps}
+      updated={updated}
+      handleClapsPage={() => dispatch(toggleClapsPage(true))}
+    />
   );
 };
 
-export default ActionBtns;
+export default ClapsBtn;

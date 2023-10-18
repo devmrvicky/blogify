@@ -11,8 +11,10 @@ import AuthorIcon from "./author/AuthorIcon";
 import PostCard from "./PostCard";
 import Categories from "./Categories";
 import FullPost from "./FullPost";
-import ActionBtns from "./ActionBtns";
-import ActionBtn from "./ActionBtn";
+import ActionBtns from "./Action-btns/ActionBtns";
+import ActionBtn from "./Action-btns/ActionBtn";
+import ClapsBtn from "./Action-btns/ClapsBtn";
+import RespondBtn from "./Action-btns/RespondBtn";
 import Author from "./author/Author";
 import PostOpts from "./PostOpts";
 import MenuItem from "./MenuItem";
@@ -20,6 +22,7 @@ import RTE from "./RTE";
 import PostCtrlBtn from "./PostCtrlBtn";
 import Popup from "./Popup";
 import ClapsPage from "./ClapsPage";
+import PreLoader from "./PreLoader";
 
 export {
   Header,
@@ -37,6 +40,8 @@ export {
   FullPost,
   ActionBtns,
   ActionBtn,
+  ClapsBtn,
+  RespondBtn,
   Author,
   PostOpts,
   MenuItem,
@@ -44,4 +49,5 @@ export {
   PostCtrlBtn,
   Popup,
   ClapsPage,
+  PreLoader,
 };

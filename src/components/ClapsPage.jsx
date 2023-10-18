@@ -9,10 +9,10 @@ const ClapsPage = () => {
   const { currentPost } = useSelector((store) => store.posts);
   return (
     <div
-      className="fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center backdrop-blur-sm"
+      className="fixed top-0 left-0 w-full h-full bg-white/50 flex items-center justify-center backdrop-blur-sm"
       onClick={() => dispatch(toggleClapsPage(false))}
     >
-      <Container maxWidth="max-w-lg" className="text-white">
+      <Container maxWidth="max-w-lg" className="text-black">
         <h1 className="text-2xl font-semibold">
           {currentPost.claps} claps from {currentPost.whoClaps.length}{" "}
           {currentPost.whoClaps.length > 1 ? "peoples " : "people "}
@@ -28,7 +28,7 @@ const ClapsPage = () => {
                 <FaUserAlt />
               </div>
               <p className="text-xl">{whoClap}</p>
-              <button className="ml-auto border px-2 py-1 rounded-full text-sm hover:bg-green-500 hover:border-green-500">
+              <button className="ml-auto border px-2 py-1 rounded-full text-sm hover:bg-green-500 hover:border-green-500 hover:text-white">
                 Follow
               </button>
             </div>

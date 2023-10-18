@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Loading, Header, Popup } from "./components";
+import { Loading, Header, Popup, PreLoader } from "./components";
 import { Outlet, useNavigate } from "react-router-dom";
 import authService from "./appwrite/authService";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,20 +64,21 @@ const App = () => {
       {/* <Footer /> */}
     </div>
   ) : (
-    <div className="w-full h-screen relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <Watch
-          height="80"
-          width="80"
-          radius="48"
-          color="#4fa94d"
-          ariaLabel="watch-loading"
-          wrapperStyle={{}}
-          wrapperClassName=""
-          visible={true}
-        />
-      </div>
-    </div>
+    <PreLoader />
+    // <div className="w-full h-screen relative">
+    //   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    //     <Watch
+    //       height="80"
+    //       width="80"
+    //       radius="48"
+    //       color="#4fa94d"
+    //       ariaLabel="watch-loading"
+    //       wrapperStyle={{}}
+    //       wrapperClassName=""
+    //       visible={true}
+    //     />
+    //   </div>
+    // </div>
   );
 };
 

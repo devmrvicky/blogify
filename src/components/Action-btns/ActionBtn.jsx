@@ -1,5 +1,5 @@
 import React from "react";
-import svgIcons from "../assets/svgIcons";
+import svgIcons from "../../assets/svgIcons";
 
 const ActionBtn = ({
   actionType,
