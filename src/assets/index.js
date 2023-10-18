@@ -18,4 +18,7 @@ export const {
   trashIcon,
   openLinkIcon,
   penIcon,
+  xmark,
+  replyIcon,
+  messageBigIcon,
 } = svgIcons;

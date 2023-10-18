@@ -1,8 +1,8 @@
-import { Author, Container } from ".";
+import { Container } from ".";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleClapsPage } from "../features";
-import { FaXmark } from "react-icons/fa6";
+import { toggleActionPage } from "../features";
 import { FaUserAlt } from "react-icons/fa";
+import { xmark } from "../assets";
 
 const ClapsPage = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const ClapsPage = () => {
   return (
     <div
       className="fixed top-0 left-0 w-full h-full bg-white/50 flex items-center justify-center backdrop-blur-sm"
-      onClick={() => dispatch(toggleClapsPage(false))}
+      onClick={() => dispatch(toggleActionPage({ clapsPage: false }))}
     >
       <Container maxWidth="max-w-lg" className="text-black">
         <h1 className="text-2xl font-semibold">
@@ -36,9 +36,9 @@ const ClapsPage = () => {
         </div>
         <button
           className="absolute top-4 right-4 text-xl"
-          onClick={() => dispatch(toggleClapsPage(false))}
+          onClick={() => dispatch(toggleActionPage({ clapsPage: false }))}
         >
-          <FaXmark />
+          <div className="svg-container">{xmark}</div>
         </button>
       </Container>
     </div>

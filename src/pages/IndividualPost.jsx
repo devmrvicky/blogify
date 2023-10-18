@@ -1,4 +1,4 @@
-import { ClapsPage, FullPost } from "../components";
+import { ClapsPage, FullPost, RespondPage } from "../components";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentPost } from "../features";
@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const IndividualPost = () => {
   const { authorId, postSlug } = useParams();
-  const { allPosts, isClapsPageOpen } = useSelector((store) => store.posts);
+  const { allPosts, isPageOpen } = useSelector((store) => store.posts);
 
   const post = allPosts.find(
     (post) => post.authorId === authorId && post.postSlug === postSlug
@@ -23,7 +23,8 @@ const IndividualPost = () => {
       {post ? (
         <>
           <FullPost {...post} />
-          {isClapsPageOpen && <ClapsPage />}
+          {isPageOpen.clapsPage && <ClapsPage />}
+          {isPageOpen.respondPage && <RespondPage />}
         </>
       ) : (
         <div className="text-center py-10">

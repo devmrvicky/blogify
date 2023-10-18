@@ -22,7 +22,10 @@ import RTE from "./RTE";
 import PostCtrlBtn from "./PostCtrlBtn";
 import Popup from "./Popup";
 import ClapsPage from "./ClapsPage";
+import RespondPage from "./RespondPage";
 import PreLoader from "./PreLoader";
+import Respond from "./Respond";
+import RespondForm from "./forms/RespondForm";
 
 export {
   Header,
@@ -49,5 +52,8 @@ export {
   PostCtrlBtn,
   Popup,
   ClapsPage,
+  RespondPage,
   PreLoader,
+  Respond,
+  RespondForm
 };

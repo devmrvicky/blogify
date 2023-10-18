@@ -23,6 +23,7 @@ const FullPost = ({
           authorName={authorName}
           readTime={readTime}
           $createdAt={$createdAt}
+          className="py-8"
         />
         <ActionBtns claps={claps} />
         <article className="py-10 font-['source-serif-pro'] leading-9 text-[22px]">

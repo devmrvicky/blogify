@@ -62,7 +62,10 @@ const initialState = {
   slug: "",
   postsById: [],
   currentPost: {},
-  isClapsPageOpen: false,
+  isPageOpen: {
+    clapsPage: false,
+    respondPage: false,
+  },
 };
 
 const postSlice = createSlice({
@@ -119,8 +122,18 @@ const postSlice = createSlice({
         ),
       };
     },
-    toggleClapsPage: (state, action) => {
-      state.isClapsPageOpen = action.payload;
+    toggleActionPage: {
+      reducer: (state, action) => {
+        state.isPageOpen = action.payload;
+      },
+      prepare: ({ clapsPage = false, respondPage = false }) => {
+        return {
+          payload: {
+            clapsPage,
+            respondPage,
+          },
+        };
+      },
     },
   },
 });
@@ -132,6 +145,6 @@ export const {
   addPostsById,
   setCurrentPost,
   addClaps,
-  toggleClapsPage,
+  toggleActionPage,
 } = postSlice.actions;
 export default postSlice.reducer;

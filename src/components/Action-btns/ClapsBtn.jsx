@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ActionBtn } from "..";
 import { useDispatch, useSelector } from "react-redux";
-import { addClaps, replaceAllPosts, toggleClapsPage } from "../../features";
+import { addClaps, replaceAllPosts, toggleActionPage } from "../../features";
 import dbService from "../../appwrite/databaseService";
 
 const ClapsBtn = () => {
@@ -56,7 +56,7 @@ const ClapsBtn = () => {
       whoClaps={whoClaps}
       onClick={handleClaps}
       updated={updated}
-      handleClapsPage={() => dispatch(toggleClapsPage(true))}
+      handleClapsPage={() => dispatch(toggleActionPage({ clapsPage: true }))}
     />
   );
 };

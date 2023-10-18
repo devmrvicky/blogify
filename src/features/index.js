@@ -14,7 +14,7 @@ import postReducer, {
   addPostsById,
   setCurrentPost,
   addClaps,
-  toggleClapsPage,
+  toggleActionPage,
 } from "./postSlice";
 
 export {
@@ -35,5 +35,5 @@ export {
   showLoginPopup,
   setCurrentPost,
   addClaps,
-  toggleClapsPage,
+  toggleActionPage,
 };
