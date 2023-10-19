@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { bell, drawing } from "../../assets";
+import WritePostBtn from "../WritePostBtn";
 
 // const useStore = () => useSelector((store) => store.posts);
 
@@ -26,13 +27,13 @@ const Nav = () => {
         {navItems.map(
           (item) =>
             item.active && (
-              <li key={item.name}>
+              <li key={item.name} className="max-[380px]:hidden">
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
                     isActive
-                      ? "text-xl px-4 relative hover:after:content-[''] after:w-full after:h-0.5 after:bg-blue-700 after:absolute after:-bottom-[19px] after:right-0"
-                      : "text-xl px-4 text-zinc-400 hover:text-zinc-800"
+                      ? "text-xl max-[500px]:text-base px-4 max-[500px]:px-2 relative hover:after:content-[''] after:w-full after:h-0.5 after:bg-blue-700 after:absolute after:-bottom-[19px] max-[500px]:after:-bottom-[16px] after:right-0"
+                      : "max-[500px]:text-base px-4 max-[500px]:px-2 text-zinc-400 hover:text-zinc-800"
                   }
                 >
                   {item.name}
@@ -42,20 +43,8 @@ const Nav = () => {
         )}
         {status && (
           <>
-            <li>
-              <NavLink
-                to="/write-post"
-                className={({ isActive }) =>
-                  isActive
-                    ? "hidden"
-                    : "flex items-center px-4 py-1 border border-blue-800 hover:bg-zinc-50 cursor-pointer rounded-full gap-2 mx-2"
-                }
-              >
-                <div className="w-6">
-                  <img src={drawing} alt="write post" className="w-full" />
-                </div>
-                <p className="text-ls">write</p>
-              </NavLink>
+            <li className="max-[545px]:hidden">
+              <WritePostBtn />
             </li>
             <li className="mx-2 w-10 h-10 flex items-center justify-center rounded-full active:scale-95 transition-all active:bg-zinc-100 cursor-pointer">
               {bell}

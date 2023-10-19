@@ -10,6 +10,7 @@ import Dashboard from "./dashboard/Dashboard";
 import Overview from "./dashboard/Overview";
 import Collections from "./dashboard/Collections";
 import Posts from "./dashboard/Posts";
+import DashboardHead from "./dashboard/DashboardHead";
 
 export {
   Home,
@@ -24,4 +25,5 @@ export {
   Overview,
   Collections,
   Posts,
+  DashboardHead,
 };

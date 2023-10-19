@@ -32,7 +32,7 @@ const IndividualPost = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-full h-full bg-white">
       {post ? (
         <>
           <FullPost {...post} />

@@ -3,12 +3,10 @@ import { Author } from "..";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import dbService from "../../appwrite/databaseService";
-import { useState } from "react";
 import { Oval } from "react-loader-spinner";
 import { addRespond, toggleActionPage } from "../../features";
 
 const RespondForm = ({ userName, isReply = false }) => {
-  const [responding, setResponding] = useState(false);
   const { userData } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const { currentPost, isPageOpen } = useSelector((store) => store.posts);
@@ -50,11 +48,11 @@ const RespondForm = ({ userName, isReply = false }) => {
         />
         {isReply && (
           <>
-            <p className="text-xl font-semibold italic text-zinc-400">To</p>
+            <p className="font-semibold italic text-zinc-400">To</p>
             <Author
               authorName={userName}
-              iconHeight="h-8"
-              iconWidth="w-8"
+              iconHeight="h-6"
+              iconWidth="w-6"
               nameFontSize="text-sm"
               followBtn={false}
             />
@@ -89,7 +87,7 @@ const RespondForm = ({ userName, isReply = false }) => {
         id="respond-writer"
         className="w-full px-4 py-2 outline-none text-sm flex-1"
         placeholder="Respond on this post"
-        autoFocus={isReply}
+        autoFocus
         {...register("respond", { required: true })}
       ></textarea>
     </form>

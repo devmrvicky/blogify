@@ -11,8 +11,8 @@ import {
   penIcon,
   trashIcon,
 } from "../../assets";
-import { WritePost } from "..";
 import { useNavigate } from "react-router-dom";
+import { DashboardHead } from "..";
 
 const Posts = () => {
   const [loading, setLoading] = useState(true);
@@ -60,7 +60,7 @@ const Posts = () => {
   }, [allPosts.length]);
   return (
     <div className="w-full h-full">
-      <h1 className="p-3 text-xl font-semibold border-b">Posts</h1>
+      <DashboardHead title={"Post"} />
       <div className="relative w-full min-h-[500px] overflow-auto p-2">
         {loading ? (
           <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center">

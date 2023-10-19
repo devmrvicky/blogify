@@ -54,7 +54,7 @@ const App = () => {
   }, [navigate, userData?.$id]);
 
   return !isLoading ? (
-    <div className="font-[poppins]">
+    <div className="font-[poppins] bg-white">
       <Header />
       <main className="w-full">
         <Outlet />

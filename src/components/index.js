@@ -26,6 +26,7 @@ import RespondPage from "./RespondPage";
 import PreLoader from "./PreLoader";
 import Respond from "./Respond";
 import RespondForm from "./forms/RespondForm";
+import WritePostBtn from "./WritePostBtn";
 
 export {
   Header,
@@ -55,5 +56,6 @@ export {
   RespondPage,
   PreLoader,
   Respond,
-  RespondForm
+  RespondForm,
+  WritePostBtn
 };
