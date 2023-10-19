@@ -22,7 +22,9 @@ const Posts = () => {
   const { userData } = useSelector((store) => store.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { postsById, allPosts } = useSelector((store) => store.posts);
+  const { postsById, allPosts, isPageOpen } = useSelector(
+    (store) => store.posts
+  );
 
   const deletePost = async (postId) => {
     try {

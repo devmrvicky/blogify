@@ -9,19 +9,7 @@ const initialState = {
     clapsPage: false,
     respondPage: false,
   },
-  currentResponds: [
-    // {
-    //   postId: "6529e93164f7ff55a54e",
-    //   uniqueId: "unique_id",
-    //   reply: false,
-    //   userId: "user_id",
-    //   userName: "User name",
-    //   respond: `I want to ask a lot of things.
-    //   First, how much time does it take to write this descriptive article(it is awesome)?
-    //   Second, how much money you make with Pinterest, etsy, etc. ? I have seen your Pinterest account it is so professional...`,
-    //   claps: 20,
-    // },
-  ],
+  currentResponds: [],
 };
 
 const postSlice = createSlice({
@@ -86,12 +74,14 @@ const postSlice = createSlice({
         clapsPage = false,
         respondPage = false,
         responding = false,
+        dashboardSidebar = false,
       }) => {
         return {
           payload: {
             clapsPage,
             respondPage,
             responding,
+            dashboardSidebar,
           },
         };
       },
