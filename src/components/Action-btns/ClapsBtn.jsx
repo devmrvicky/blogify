@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { ActionBtn } from "..";
 import { useDispatch, useSelector } from "react-redux";
-import { addClaps, replaceAllPosts, toggleActionPage } from "../../features";
+import {
+  addClaps,
+  replaceAllPosts,
+  showLoginPopup,
+  toggleActionPage,
+} from "../../features";
 import dbService from "../../appwrite/databaseService";
 
 const ClapsBtn = () => {
@@ -10,10 +15,14 @@ const ClapsBtn = () => {
   const [clapped, setClapped] = useState(false);
   const [whoClaps, setWhoClaps] = useState([]);
   const dispatch = useDispatch();
-  const { userData } = useSelector((store) => store.auth);
+  const { userData, status } = useSelector((store) => store.auth);
   const { currentPost } = useSelector((store) => store.posts);
   const handleClaps = () => {
-    dispatch(addClaps({ claps: 1, whoClap: userData.$id }));
+    if (status) {
+      dispatch(addClaps({ claps: 1, whoClap: userData.$id }));
+    } else {
+      dispatch(showLoginPopup(true));
+    }
   };
 
   useEffect(() => {
@@ -42,7 +51,7 @@ const ClapsBtn = () => {
 
   useEffect(() => {
     whoClaps.forEach((whoClap) => {
-      if (whoClap === userData.$id) {
+      if (userData?.$id && whoClap === userData?.$id) {
         setClapped(true);
       }
     });

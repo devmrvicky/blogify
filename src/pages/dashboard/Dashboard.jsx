@@ -62,8 +62,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard bg-white flex w-full h-[90vh]">
       <div
-        className={`dashboard-menus w-1/4 max-[800px]:w-[200px] border p-2 max-[800px]:fixed bg-white z-20 h-full max-[800px]:-translate-x-full transition-all ${
-          isPageOpen.dashboardSidebar && "max-[800px]:-translate-x-0"
+        className={`dashboard-menus w-1/4 max-[800px]:w-[200px] border p-2 max-[800px]:fixed bg-white z-20 h-full translate-x-0 transition-all ${
+          isPageOpen.dashboardSidebar
+            ? "max-[800px]:translate-x-0"
+            : "max-[800px]:-translate-x-full"
         }`}
       >
         <h1 className="text-2xl font-semibold px-2 py-4">

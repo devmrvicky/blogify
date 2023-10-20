@@ -35,7 +35,7 @@ const RespondForm = ({ userName, isReply = false }) => {
   };
   return (
     <form
-      className={`respond-writer max-w-lg w-full bg-white border shadow-lg flex flex-col rounded-sm h-24 focus-within:border-2 fixed bottom-2 left-1/2 -translate-x-1/2 focus-within:h-96 transition-all`}
+      className={`respond-writer max-w-lg w-[95%] bg-white border shadow-lg flex flex-col rounded-sm h-24 focus-within:border-2 fixed bottom-2 left-1/2 -translate-x-1/2 focus-within:h-96 transition-all `}
       onSubmit={handleSubmit(handleRespondForm)}
     >
       <label htmlFor="respond-writer" className="items-center p-2 flex gap-3">

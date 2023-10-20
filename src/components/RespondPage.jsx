@@ -25,14 +25,14 @@ const RespondPage = () => {
 
   return (
     <div
-      className="responds-page fixed top-0 left-0 w-full h-full bg-white flex items-center justify-center backdrop-blur-sm"
+      className="responds-page fixed top-0 left-0 w-full h-full bg-white flex items-center justify-center backdrop-blur-sm pb-[150px]"
       onClick={closeRespondPage}
     >
       <Container
         maxWidth="max-w-lg"
-        className="text-black h-full overflow-auto px-2"
+        className="text-black h-full overflow-auto px-2 mt-[120px]"
       >
-        <h1 className="text-2xl font-semibold text-center py-5 border-b">
+        <h1 className="text-2xl font-semibold text-center py-5 border-b max-[524px]:pr-8">
           {responds.length
             ? `${responds.length} ${
                 responds.length > 1 ? "responds" : "respond"
@@ -98,7 +98,7 @@ const RespondPage = () => {
         <RespondForm {...toReply} />
 
         <button
-          className="absolute top-4 right-4 text-xl active:scale-95 transition-all"
+          className="absolute top-24 right-4 text-xl active:scale-95 transition-all bg-white"
           onClick={() => dispatch(toggleActionPage(false))}
         >
           <div className="svg-container">{xmark}</div>
