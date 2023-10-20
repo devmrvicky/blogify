@@ -73,9 +73,11 @@ const AuthorMenu = () => {
             "welcome in Blogify"
           )}
         </h2>
-        <div className="hidden max-[545px]:flex py-2">
-          <WritePostBtn />
-        </div>
+        {status && (
+          <div className="hidden max-[545px]:block py-2 max-w-[250px] max-[500px]:max-w-[200px] mx-auto">
+            <WritePostBtn text="create a post" />
+          </div>
+        )}
         {menus.map(
           (menu) =>
             menu.status && (

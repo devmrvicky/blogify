@@ -4,11 +4,10 @@ import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import authService from "../../appwrite/authService";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { end, start } from "../../features";
+import { end, start, toggleActionPage } from "../../features";
 import { MenuItem } from "../../components";
 
 const Dashboard = () => {
-  const [isShowingSideBar, setIsShowingSideBar] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [authorName, setAuthorName] = useState("");
   const { authorId } = useParams();
@@ -55,6 +54,11 @@ const Dashboard = () => {
       }
     })();
   });
+
+  useEffect(() => {
+    dispatch(toggleActionPage({ dashboardSidebar: false }));
+  }, [navigate]);
+
   return (
     <div className="dashboard bg-white flex w-full h-[90vh]">
       <div

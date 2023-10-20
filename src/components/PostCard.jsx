@@ -16,6 +16,7 @@ const PostCard = ({
   categories,
   postSlug,
   authorPost = false,
+  dashboardPost = false,
 }) => {
   const date = useFormateDistanceDate($createdAt);
 
@@ -40,7 +41,11 @@ const PostCard = ({
             {parse(authorPost ? article.slice(0, 100) : article.slice(0, 200))}
             ...
           </div>
-          <div className="flex items-center gap-2 mt-auto text-xs text-zinc-500 max-[370px]:absolute max-[370px]:top-[16px] max-[370px]:left-10">
+          <div
+            className={`flex items-center gap-2 mt-auto text-xs text-zinc-500  max-[370px]:top-[23px] max-[370px]:left-10 ${
+              dashboardPost ? "max-[370px]:static" : "max-[370px]:absolute"
+            }`}
+          >
             <p>{date}</p>
             {!authorPost && (
               <>
@@ -64,8 +69,10 @@ const PostCard = ({
         </div>
         <div
           className={`img-container ${
-            authorPost ? "w-[100px] max-h-[100px]" : "w-[200px] max-h-[200px]"
-          } max-[635px]:w-[150px] max-[422px]:w-[100px] max-[370px]:w-[200px]`}
+            authorPost ? `w-[100px] max-h-[100px]` : "w-[200px] max-h-[200px]"
+          } max-[635px]:w-[150px] max-[422px]:w-[100px] max-[370px]:w-[200px] ${
+            dashboardPost && "max-[370px]:max-h-none"
+          }`}
         >
           <img src={sample} alt="sample-img" className="w-full object-cover" />
         </div>

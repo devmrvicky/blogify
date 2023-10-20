@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { drawing } from "../assets";
 
-const WritePostBtn = () => {
+const WritePostBtn = ({ text = "write" }) => {
   return (
     <NavLink
       to="/write-post"
@@ -15,7 +15,7 @@ const WritePostBtn = () => {
       <div className="w-6">
         <img src={drawing} alt="write post" className="w-full" />
       </div>
-      <p className="text-ls">write</p>
+      <p className="text-ls">{text}</p>
     </NavLink>
   );
 };

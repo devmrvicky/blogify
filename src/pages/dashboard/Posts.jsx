@@ -82,10 +82,10 @@ const Posts = () => {
         ) : postsById.length ? (
           postsById.map((post) => (
             <div
-              className="w-full border-b pb-5 mb-2 max-w-3xl mx-auto flex flex-col gap-3"
+              className={`w-full border-b pb-5 mb-2 max-w-3xl mx-auto flex flex-col gap-3 max-[370px]:gap-0`}
               key={post.$id}
             >
-              <PostCard {...post} authorPost={true} />
+              <PostCard {...post} authorPost={true} dashboardPost={true} />
               <div className="post-btns w-full flex-1 flex items-center gap-2">
                 <PostCtrlBtn
                   btnName="Edit post"

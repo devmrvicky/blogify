@@ -44,7 +44,7 @@ const Nav = () => {
         {status && (
           <>
             <li className="max-[545px]:hidden">
-              <WritePostBtn />
+              <WritePostBtn text="write" />
             </li>
             <li className="mx-2 w-10 h-10 flex items-center justify-center rounded-full active:scale-95 transition-all active:bg-zinc-100 cursor-pointer">
               {bell}
