@@ -17,6 +17,9 @@ import postReducer, {
   toggleActionPage,
   addAllResponds,
   addRespond,
+  collectPost,
+  deleteCollectedPost,
+  addLabel,
 } from "./postSlice";
 
 export {
@@ -40,4 +43,7 @@ export {
   toggleActionPage,
   addAllResponds,
   addRespond,
+  collectPost,
+  deleteCollectedPost,
+  addLabel,
 };

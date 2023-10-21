@@ -27,6 +27,7 @@ import PreLoader from "./PreLoader";
 import Respond from "./Respond";
 import RespondForm from "./forms/RespondForm";
 import WritePostBtn from "./WritePostBtn";
+import LabelBtn from "./LabelBtn";
 
 export {
   Header,
@@ -57,5 +58,6 @@ export {
   PreLoader,
   Respond,
   RespondForm,
-  WritePostBtn
+  WritePostBtn,
+  LabelBtn,
 };

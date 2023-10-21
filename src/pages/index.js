@@ -11,6 +11,7 @@ import Overview from "./dashboard/Overview";
 import Collections from "./dashboard/Collections";
 import Posts from "./dashboard/Posts";
 import DashboardHead from "./dashboard/DashboardHead";
+import Notification from "./Notification";
 
 export {
   Home,
@@ -26,4 +27,5 @@ export {
   Collections,
   Posts,
   DashboardHead,
+  Notification,
 };

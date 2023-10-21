@@ -7,8 +7,10 @@ export { logo, drawing, sample };
 export const {
   claps,
   bookmark,
+  filledBookmarkIcon,
   share,
   bell,
+  filledBell,
   comment,
   logoutIcon,
   profileIcon,
@@ -21,4 +23,5 @@ export const {
   xmark,
   replyIcon,
   messageBigIcon,
+  clearIcon,
 } = svgIcons;

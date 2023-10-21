@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { bell, drawing } from "../../assets";
+import { bell, drawing, filledBell } from "../../assets";
 import WritePostBtn from "../WritePostBtn";
 
 // const useStore = () => useSelector((store) => store.posts);
 
 const Nav = () => {
-  const { status } = useSelector((store) => store.auth);
+  const { status, userData } = useSelector((store) => store.auth);
 
   const navItems = [
     {
@@ -47,7 +47,9 @@ const Nav = () => {
               <WritePostBtn text="write" />
             </li>
             <li className="mx-2 w-10 h-10 flex items-center justify-center rounded-full active:scale-95 transition-all active:bg-zinc-100 cursor-pointer">
-              {bell}
+              <NavLink to={`/${userData.$id}/notification`}>
+                {({ isActive }) => (isActive ? filledBell : bell)}
+              </NavLink>
             </li>
           </>
         )}

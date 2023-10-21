@@ -19,6 +19,7 @@ import {
   Home,
   IndividualPost,
   Login,
+  Notification,
   Overview,
   Posts,
   Signup,
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route path="/contact-us" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/:authorId/notification" element={<Notification />} />
       <Route path="/:authorId/:postSlug/edit" element={<EditPost />} />
       <Route path="/:authorId/:postSlug" element={<IndividualPost />} />
       <Route path="/:authorId" element={<Dashboard />}>

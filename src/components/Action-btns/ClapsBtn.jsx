@@ -47,7 +47,7 @@ const ClapsBtn = () => {
         setUpdated(true);
       }
     })();
-  }, [currentPost.claps, claps]);
+  }, [currentPost?.claps, claps]);
 
   useEffect(() => {
     whoClaps.forEach((whoClap) => {

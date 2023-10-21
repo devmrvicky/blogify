@@ -10,6 +10,56 @@ const initialState = {
     respondPage: false,
   },
   currentResponds: [],
+  collectedPosts: [],
+  allLabels: [
+    "Engineer",
+    "Developer",
+    "Designer",
+    "Architect",
+    "Manager",
+    "Analyst",
+    "DevOps",
+    "QA",
+    "Coder",
+    "Programmer",
+    "Tech Lead",
+    "Consultant",
+    "Writer",
+    "Hacker",
+    "Guru",
+    "Admin",
+    "Ops",
+    "SRE",
+    "Agile",
+    "Tester",
+    "Support",
+    "DBA",
+    "Ops",
+    "Scrum",
+    "Lead",
+    "Writer",
+    "Consultant",
+    "Coder",
+    "Analyst",
+    "Manager",
+    "Architect",
+    "Designer",
+    "Hacker",
+    "Guru",
+    "Support",
+    "Ops",
+    "Tester",
+    "Admin",
+    "DBA",
+    "SRE",
+    "Ops",
+    "Agile",
+    "Tester",
+    "Lead",
+    "Writer",
+    "Consultant",
+  ],
+  selectedLabels: [],
 };
 
 const postSlice = createSlice({
@@ -92,6 +142,26 @@ const postSlice = createSlice({
     addRespond: (state, action) => {
       state.currentResponds.push(action.payload);
     },
+    collectPost: (state, action) => {
+      state.collectedPosts.push(action.payload);
+    },
+    deleteCollectedPost: (state, action) => {
+      state.collectedPosts = state.collectedPosts.filter(
+        (postId) => postId !== action.payload
+      );
+    },
+    addLabel: (state, action) => {
+      state.selectedLabels.push(action.payload);
+      state.allLabels = state.allLabels.filter(
+        (label) => label !== action.payload
+      );
+    },
+    removeLabel: (state, action) => {
+      state.allLabels.push(action.payload);
+      state.selectedLabels = state.selectedLabels.filter(
+        (label) => label !== action.payload
+      );
+    },
   },
 });
 
@@ -105,5 +175,8 @@ export const {
   toggleActionPage,
   addAllResponds,
   addRespond,
+  collectPost,
+  deleteCollectedPost,
+  addLabel,
 } = postSlice.actions;
 export default postSlice.reducer;

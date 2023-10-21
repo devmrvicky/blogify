@@ -19,11 +19,40 @@ const svgIcons = {
       ></path>
     </svg>
   ),
+  filledBell: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-label="Notifications"
+    >
+      <path
+        d="M15 18.5a3 3 0 1 1-6 0"
+        stroke="currentColor"
+        strokeLinecap="round"
+      ></path>
+      <path
+        d="M5.5 10.53V9a6.5 6.5 0 0 1 13 0v1.53c0 1.42.56 2.78 1.57 3.79l.03.03c.26.26.4.6.4.97v2.93c0 .14-.11.25-.25.25H3.75a.25.25 0 0 1-.25-.25v-2.93c0-.37.14-.71.4-.97l.03-.03c1-1 1.57-2.37 1.57-3.79z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeLinejoin="round"
+      ></path>
+    </svg>
+  ),
   bookmark: (
     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" className="mn">
       <path
         d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z"
         fill="#292929"
+      ></path>
+    </svg>
+  ),
+  filledBookmarkIcon: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="rm">
+      <path
+        d="M7.5 3.75a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-14a2 2 0 0 0-2-2h-9z"
+        fill="#000"
       ></path>
     </svg>
   ),
@@ -587,6 +616,25 @@ const svgIcons = {
           d="M649.3 498.7v5.8L631.1 515l0.1 12.5 15.4-9 0.1 5.8-15.5 8.9v12.9l18.2-10.5v5.9l-23.8 13.7-0.2-42.8z"
           fill="#FFFFFF"
         ></path>
+      </g>
+    </svg>
+  ),
+  clearIcon: (
+    <svg
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+      width="22"
+      height="22"
+      fill="#000000"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M10 12.6l.7.7 1.6-1.6 1.6 1.6.8-.7L13 11l1.7-1.6-.8-.8-1.6 1.7-1.6-1.7-.7.8 1.6 1.6-1.6 1.6zM1 4h14V3H1v1zm0 3h14V6H1v1zm8 2.5V9H1v1h8v-.5zM9 13v-1H1v1h8z"></path>
       </g>
     </svg>
   ),
