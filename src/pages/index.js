@@ -12,6 +12,10 @@ import Collections from "./dashboard/Collections";
 import Posts from "./dashboard/Posts";
 import DashboardHead from "./dashboard/DashboardHead";
 import Notification from "./Notification";
+import Profile from "./profile/Profile";
+import Preferences from "./profile/Preferences";
+import SettingLists from "./profile/SettingLists";
+import CategoriesLists from "./profile/CategoriesLists";
 
 export {
   Home,
@@ -28,4 +32,8 @@ export {
   Posts,
   DashboardHead,
   Notification,
+  Profile,
+  SettingLists,
+  Preferences,
+  CategoriesLists,
 };

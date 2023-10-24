@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import {
   About,
+  CategoriesLists,
   Collections,
   Contact,
   Dashboard,
@@ -22,6 +23,9 @@ import {
   Notification,
   Overview,
   Posts,
+  Preferences,
+  Profile,
+  SettingLists,
   Signup,
   WritePost,
 } from "./pages";
@@ -35,7 +39,15 @@ const router = createBrowserRouter(
       <Route path="/contact-us" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/me" element={<Signup />} />
+      <Route path="/me" element={<Profile />}>
+        <Route path="/me" element={<SettingLists />} />
+        <Route path="/me/preferences" element={<Preferences />}>
+          <Route
+            path="/me/preferences/category"
+            element={<CategoriesLists />}
+          />
+        </Route>
+      </Route>
       <Route path="/:authorId/notification" element={<Notification />} />
       <Route path="/:authorId/:postSlug/edit" element={<EditPost />} />
       <Route path="/:authorId/:postSlug" element={<IndividualPost />} />

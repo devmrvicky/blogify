@@ -24,7 +24,7 @@ const AuthorMenu = () => {
     },
     {
       item: "Profile",
-      path: "/profile",
+      path: "/me",
       status: status,
       icon: profileIcon,
     },

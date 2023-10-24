@@ -31,6 +31,8 @@ import LabelBtn from "./LabelBtn";
 import NavLinks from "./NavLinks";
 import PostsLists from "./PostsLists";
 import CategoryPosts from "./CategoryPosts";
+import SettingCard from "./settings/SettingCard";
+import FixedPage from "./FixedPage";
 
 export {
   Header,
@@ -66,4 +68,6 @@ export {
   NavLinks,
   PostsLists,
   CategoryPosts,
+  SettingCard,
+  FixedPage,
 };

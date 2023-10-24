@@ -24,4 +24,7 @@ export const {
   replyIcon,
   messageBigIcon,
   clearIcon,
+  barsIcon,
+  curlyBracketIcon,
+  categoryIcon,
 } = svgIcons;
