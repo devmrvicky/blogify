@@ -28,6 +28,9 @@ import Respond from "./Respond";
 import RespondForm from "./forms/RespondForm";
 import WritePostBtn from "./WritePostBtn";
 import LabelBtn from "./LabelBtn";
+import NavLinks from "./NavLinks";
+import PostsLists from "./PostsLists";
+import CategoryPosts from "./CategoryPosts";
 
 export {
   Header,
@@ -60,4 +63,7 @@ export {
   RespondForm,
   WritePostBtn,
   LabelBtn,
+  NavLinks,
+  PostsLists,
+  CategoryPosts,
 };

@@ -28,7 +28,6 @@ const initialState = {
     "Hacker",
     "Guru",
     "Admin",
-    "Ops",
     "SRE",
     "Agile",
     "Tester",
@@ -60,6 +59,7 @@ const initialState = {
     "Consultant",
   ],
   selectedLabels: [],
+  categories: [],
 };
 
 const postSlice = createSlice({
@@ -162,6 +162,10 @@ const postSlice = createSlice({
         (label) => label !== action.payload
       );
     },
+    addCategories: (state, action) => {
+      if (state.categories.includes(action.payload)) return;
+      state.categories.push(action.payload);
+    },
   },
 });
 
@@ -178,5 +182,7 @@ export const {
   collectPost,
   deleteCollectedPost,
   addLabel,
+  removeLabel,
+  addCategories,
 } = postSlice.actions;
 export default postSlice.reducer;

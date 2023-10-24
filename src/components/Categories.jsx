@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "./Container";
+import { NavLinks } from ".";
 
 const Categories = () => {
   const handleMouseMove = (e) => {
@@ -7,6 +7,7 @@ const Categories = () => {
     // console.log(target);
   };
   const categories = [
+    "For you",
     "Developer",
     "Programmer",
     "Architect",
@@ -37,22 +38,20 @@ const Categories = () => {
     "Network",
   ];
   return (
-    <div className="w-full max-w-3xl border-b overflow-auto mt-5">
+    <div className="w-full max-w-3xl overflow-auto mt-5">
       <div
         className="flex items-center gap-2 w-full"
         onMouseMove={handleMouseMove}
       >
-        <button className="px-3 py-3 text-zinc-400 min-w-max hover:text-black">
-          For you
-        </button>
-        {categories.map((category) => (
-          <button
-            key={category}
-            className="px-3 py-3 text-zinc-400 min-w-max hover:text-black"
-          >
-            {category}
-          </button>
-        ))}
+        <div className="categories-menu flex items-center gap-5 pb-[3px] border-b overflow-hidden">
+          {categories.map((menu) => (
+            <NavLinks
+              name={menu}
+              path={menu === "For you" ? "" : `/category:${menu}`}
+              key={menu}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, PostCard } from "../components";
+import { Container, NavLinks, PostCard } from "../components";
 import { useSelector } from "react-redux";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { clearIcon } from "../assets";
@@ -43,17 +43,7 @@ const Notification = () => {
         <div className="max-w-2xl">
           <div className="notification-menu flex items-center gap-5 border-b">
             {notificationMenus.map((menu) => (
-              <NavLink
-                to={menu.path}
-                key={menu.name}
-                className={({ isActive }) =>
-                  isActive
-                    ? "p-2 text-sm text-black  relative after:contents-[''] after:w-full after:h-[0.5px] after:bg-black after:absolute after:-bottom-[2px] after:left-1/2 after:-translate-x-1/2"
-                    : "p-2 text-sm text-zinc-400 hover:text-black"
-                }
-              >
-                {menu.name}
-              </NavLink>
+              <NavLinks {...menu} key={menu.name} />
             ))}
             <button className="mx-2 w-10 h-10 flex items-center justify-center rounded-full active:scale-95 transition-all active:bg-zinc-100 cursor-pointer ml-auto">
               {clearIcon}

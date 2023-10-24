@@ -20,6 +20,7 @@ import postReducer, {
   collectPost,
   deleteCollectedPost,
   addLabel,
+  removeLabel,addCategories
 } from "./postSlice";
 
 export {
@@ -46,4 +47,5 @@ export {
   collectPost,
   deleteCollectedPost,
   addLabel,
+  removeLabel,addCategories
 };

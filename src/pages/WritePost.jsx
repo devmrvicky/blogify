@@ -5,7 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { open } from "../features/editorSlice";
 import { useForm } from "react-hook-form";
 import dbService from "../appwrite/databaseService";
-import { add, end, start, setSlug, replaceAllPosts } from "../features";
+import {
+  add,
+  end,
+  start,
+  setSlug,
+  replaceAllPosts,
+  addCategories,
+} from "../features";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaXmark, FaBars } from "react-icons/fa6";
@@ -25,6 +32,9 @@ const WritePost = ({ post }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { $id, name } = useSelector((store) => store.auth.userData);
+  const { slug, categories, selectedLabels } = useSelector(
+    (store) => store.posts
+  );
   const postSlug = watch("title").split(" ").join("-");
   dispatch(setSlug(postSlug));
 
@@ -37,6 +47,8 @@ const WritePost = ({ post }) => {
   };
 
   const postArticle = async (data) => {
+    // console.log({ slug, categories, selectedLabels });
+    // return;
     try {
       setPosting(true);
       const prepareData = {
@@ -44,8 +56,11 @@ const WritePost = ({ post }) => {
         authorId: $id,
         authorName: name,
         readTime: calculateReadingTime(data.article),
-        postSlug,
+        postSlug: slug,
         claps: 0,
+        whoClaps: [],
+        categories,
+        labels: selectedLabels,
       };
       if (post) {
         const updatedPosts = await dbService.updatePost(post.$id, prepareData);
@@ -66,6 +81,8 @@ const WritePost = ({ post }) => {
       console.log(error.message);
     } finally {
       setPosting(false);
+      //   dispatch(setSlug(slug.split(" ").join("-")));
+      // dispatch(addCategories(category));
     }
   };
 

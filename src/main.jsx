@@ -25,6 +25,7 @@ import {
   Signup,
   WritePost,
 } from "./pages";
+import CategoryPosts from "./components/CategoryPosts.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
       <Route path="/contact-us" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/me" element={<Signup />} />
       <Route path="/:authorId/notification" element={<Notification />} />
       <Route path="/:authorId/:postSlug/edit" element={<EditPost />} />
       <Route path="/:authorId/:postSlug" element={<IndividualPost />} />
