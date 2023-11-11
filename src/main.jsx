@@ -20,8 +20,11 @@ import {
   Home,
   IndividualPost,
   Login,
+  Me,
+  NameSetting,
   Notification,
   Overview,
+  PersonalSettings,
   Posts,
   Preferences,
   Profile,
@@ -39,12 +42,18 @@ const router = createBrowserRouter(
       <Route path="/contact-us" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/me" element={<Profile />}>
-        <Route path="/me" element={<SettingLists />} />
+      <Route path="/me" element={<Me />}>
+        <Route path="/me" element={<Profile />} />
         <Route path="/me/preferences" element={<Preferences />}>
           <Route
             path="/me/preferences/category"
             element={<CategoriesLists />}
+          />
+        </Route>
+        <Route path="/me/personal-settings" element={<PersonalSettings />}>
+          <Route
+            path="/me/personal-settings/profile"
+            element={<NameSetting />}
           />
         </Route>
       </Route>

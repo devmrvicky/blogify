@@ -6,6 +6,13 @@ const env = {
   appwriteRespondCollectionId: String(
     import.meta.env.VITE_APPWRITE_RESPOND_COLLECTION_ID
   ),
+  appwriteUserDataCollectionId: String(
+    import.meta.env.VITE_APPWRITE_USERDATA_COLLECTION_ID
+  ),
+  appwriteProfileImgBucketId: String(
+    import.meta.env.VITE_APPWRITE_PROFILEIMG_BUCKET_ID
+  ),
+  appwriteBgImgBucketId: String(import.meta.env.VITE_APPWRITE_BGIMG_BUCKET_ID),
 };
 
 export default env;

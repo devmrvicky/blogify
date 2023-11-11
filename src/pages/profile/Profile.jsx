@@ -1,35 +1,71 @@
 import React from "react";
-import { Container, SettingCard } from "../../components";
-import { FaBars } from "react-icons/fa6";
-import { barsIcon, curlyBracketIcon } from "../../assets";
-import { useSelector } from "react-redux";
+import { avatarIcon, penIcon, profileIcon, profileImg } from "../../assets";
+import ProfileField from "./ProfileField";
 import SettingLists from "./SettingLists";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleActionPage } from "../../features";
+import ProfileImg from "./ProfileImg";
 
 const Profile = () => {
-  const { status, userData } = useSelector((store) => store.auth);
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userData, userMainData } = useSelector((store) => store.auth);
+  const {
+    name,
+    userName,
+    bio,
+    email,
+    phone,
+    interestedIn,
+    contactInfo,
+    website,
+    userId,
+  } = userMainData;
+  // console.log(userMainData);
+
   return (
-    <div>
-      {status ? (
-        <Container>
-          <div className="border-b py-2 flex items-center gap-3">
-            <button className="w-8 h-8 rounded-full border text-sm flex items-center justify-center hover:bg-zinc-300/50 active:scale-95 transition-all">
-              {barsIcon}
-            </button>
-            <h1
-              className="text-xl cursor-pointer"
-              onClick={() => navigate("/me")}
-            >
-              {userData.name}
-            </h1>
+    <>
+      <div className="border rounded">
+        <ProfileImg />
+        <div className="profile-details flex flex-col px-5 gap-1">
+          <h1 className="text-4xl">{name}</h1>
+          <i className="text-zinc-400">{userName ? userName : userId}</i>
+          <p className="py-1 text-sm">
+            {bio}
+            {/* Full Stack Developer with a knack for turning concepts into polished
+            web and mobile applications, proficient in front-end and back-end
+            technologies. */}
+          </p>
+          {email && <ProfileField field="Email" value={email} />}
+          {phone && <ProfileField field="Phone" value={phone} />}
+          {interestedIn && (
+            <ProfileField field="Interested in" value={interestedIn} />
+          )}
+          {contactInfo && (
+            <ProfileField field="Contact info" value={contactInfo} />
+          )}
+          {website && <ProfileField field="Website" value={website} />}
+          <div className="stats flex gap-2 items-center justify-around mt-5 border-t py-7">
+            <div className="flex flex-col  items-center">
+              <span className="text-lg">100</span>
+              <span className="text-xs text-zinc-500">Posts</span>
+            </div>
+            <div className="flex flex-col  items-center">
+              <span className="text-lg">100k</span>
+              <span className="text-xs text-zinc-500">Followers</span>
+            </div>
+            <div className="flex flex-col  items-center">
+              <span className="text-lg">100</span>
+              <span className="text-xs text-zinc-500">Following</span>
+            </div>
+            <div className="flex flex-col  items-center">
+              <span className="text-lg">10m</span>
+              <span className="text-xs text-zinc-500">claps</span>
+            </div>
           </div>
-          <Outlet />
-        </Container>
-      ) : (
-        <h1>You are not authorized person.</h1>
-      )}
-    </div>
+        </div>
+      </div>
+      <SettingLists />
+    </>
   );
 };
 

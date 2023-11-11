@@ -76,6 +76,13 @@ class AuthService {
     }
   }
 
+  // update account preferences
+  async updateUserPrefs() {
+    try {
+      await this.account.updatePrefs();
+    } catch (error) {}
+  }
+
   // Delete account
   //  todo: this service isn't working
   async deleteAccount(id) {

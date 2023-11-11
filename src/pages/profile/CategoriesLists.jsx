@@ -4,21 +4,33 @@ import authService from "../../appwrite/authService";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import CategoriesPopup from "./CategoriesPopup";
-import { toggleActionPage } from "../../features";
+import { toggleActionPage, updateUserMainData } from "../../features";
+import dbService from "../../appwrite/databaseService";
 
 const CategoriesLists = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
 
+  const { userData, userMainData } = useSelector((store) => store.auth);
   const { isPageOpen } = useSelector((store) => store.posts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!loading) {
+      setCategories(userMainData?.categories);
+    }
+  }, [userMainData?.categories?.length, loading]);
 
   useEffect(() => {
     (async function () {
       try {
         setLoading(true);
-        const res = await authService.getUserPrefs();
-        console.log(res);
+        if (userMainData) {
+          const res = await dbService.getAllUserDataByUserId(userData);
+          if (res) {
+            dispatch(updateUserMainData(res.documents[0]));
+          }
+        }
       } catch (error) {
         console.error(error.message);
       } finally {
@@ -47,9 +59,16 @@ const CategoriesLists = () => {
         </div>
       ) : (
         <>
-          <div className="border-t border-b flex gap-3 py-5 my-5">
-            {categories.length ? (
-              ""
+          <div className="border-t border-b flex gap-3 py-5 my-5 flex-wrap">
+            {categories?.length ? (
+              categories.map((category) => (
+                <button
+                  key={category}
+                  className={`px-3 py-1 border rounded-full active:scale-95 transition-all text-sm bg-zinc-300/30`}
+                >
+                  {category}
+                </button>
+              ))
             ) : (
               <div className="text-center w-full py-5">
                 You have not choose any categories.

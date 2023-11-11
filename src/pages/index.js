@@ -12,10 +12,13 @@ import Collections from "./dashboard/Collections";
 import Posts from "./dashboard/Posts";
 import DashboardHead from "./dashboard/DashboardHead";
 import Notification from "./Notification";
+import Me from "./profile/Me";
 import Profile from "./profile/Profile";
 import Preferences from "./profile/Preferences";
+import PersonalSettings from "./profile/PersonalSettings";
 import SettingLists from "./profile/SettingLists";
 import CategoriesLists from "./profile/CategoriesLists";
+import NameSetting from "./profile/NameSetting";
 
 export {
   Home,
@@ -32,8 +35,10 @@ export {
   Posts,
   DashboardHead,
   Notification,
+  Me,
   Profile,
   SettingLists,
   Preferences,
-  CategoriesLists,
+  PersonalSettings,
+  CategoriesLists,NameSetting
 };

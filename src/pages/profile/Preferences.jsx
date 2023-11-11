@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MenuBtn from "./MenuBtn";
 import { SettingCard } from "../../components";
-import { categoryIcon } from "../../assets";
-import { Outlet } from "react-router-dom";
+import { barsIcon, categoryIcon } from "../../assets";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import SettingLayout from "./SettingLayout";
 
 const Preferences = () => {
+  const { userData } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
-    <div className="py-8">
-      <h2 className="text-3xl border-b py-3 font-semibold">Preferences</h2>
+    <SettingLayout title="Preferences">
       <div className="flex">
         <div className="left-side border-r w-1/5 flex flex-col gap-2 p-2">
           <SettingCard
@@ -24,7 +28,7 @@ const Preferences = () => {
           <Outlet />
         </div>
       </div>
-    </div>
+    </SettingLayout>
   );
 };
 

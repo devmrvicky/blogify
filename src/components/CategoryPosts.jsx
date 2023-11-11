@@ -7,9 +7,7 @@ const CategoryPosts = () => {
   const [posts, setPosts] = useState([]);
   const { allPosts, collectedPosts } = useSelector((store) => store.posts);
   const params = useParams()
-  console.log(params)
 
-  // console.log(posts);
   useEffect(() => {
     setPosts(
       allPosts.map((post) =>

@@ -15,6 +15,7 @@ import ActionBtns from "./Action-btns/ActionBtns";
 import ActionBtn from "./Action-btns/ActionBtn";
 import ClapsBtn from "./Action-btns/ClapsBtn";
 import RespondBtn from "./Action-btns/RespondBtn";
+import SubmitBtn from "./Action-btns/SubmitBtn";
 import Author from "./author/Author";
 import PostOpts from "./PostOpts";
 import MenuItem from "./MenuItem";
@@ -33,6 +34,7 @@ import PostsLists from "./PostsLists";
 import CategoryPosts from "./CategoryPosts";
 import SettingCard from "./settings/SettingCard";
 import FixedPage from "./FixedPage";
+import PopupPage from "./PopupPage";
 
 export {
   Header,
@@ -70,4 +72,6 @@ export {
   CategoryPosts,
   SettingCard,
   FixedPage,
+  PopupPage,
+  SubmitBtn,
 };

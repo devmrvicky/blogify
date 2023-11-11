@@ -126,6 +126,8 @@ const postSlice = createSlice({
         responding = false,
         dashboardSidebar = false,
         categoryPopup = false,
+        mainProfilePage = false,
+        profileEditPage = false,
       }) => {
         return {
           payload: {
@@ -134,6 +136,8 @@ const postSlice = createSlice({
             responding,
             dashboardSidebar,
             categoryPopup,
+            mainProfilePage,
+            profileEditPage,
           },
         };
       },

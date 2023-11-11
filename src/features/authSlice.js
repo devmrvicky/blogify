@@ -5,6 +5,7 @@ const initialState = {
   userData: null,
   menuOpen: false,
   loginPopup: false,
+  userMainData: null,
 };
 
 const authSlice = createSlice({
@@ -20,6 +21,7 @@ const authSlice = createSlice({
       state.userData = null;
       state.menuOpen = false;
       state.loginPopup = false;
+      state.userMainData = null;
     },
     toggleMenu: (state, action) => {
       state.menuOpen = action.payload;
@@ -30,9 +32,19 @@ const authSlice = createSlice({
     showLoginPopup: (state, action) => {
       state.loginPopup = action.payload;
     },
+    updateUserMainData: (state, action) => {
+      console.log(action.payload);
+      state.userMainData = action.payload;
+    },
   },
 });
 
-export const { login, logout, toggleMenu, updateData, showLoginPopup } =
-  authSlice.actions;
+export const {
+  login,
+  logout,
+  toggleMenu,
+  updateData,
+  showLoginPopup,
+  updateUserMainData,
+} = authSlice.actions;
 export default authSlice.reducer;

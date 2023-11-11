@@ -1,9 +1,11 @@
 import logo from "./logo.png";
 import drawing from "./drawing.png";
 import sample from "./sample.jpg";
+import profileImg from "./profile.png";
+// import profileImg from "./profile.jpg";
 import svgIcons from "./svgIcons";
 
-export { logo, drawing, sample };
+export { logo, drawing, sample, profileImg };
 export const {
   claps,
   bookmark,
@@ -27,4 +29,5 @@ export const {
   barsIcon,
   curlyBracketIcon,
   categoryIcon,
+  avatarIcon,
 } = svgIcons;

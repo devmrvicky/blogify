@@ -6,6 +6,8 @@ const Input = (
     label,
     className = "px-3 py-2",
     labelStyle = "text-xl font-semibold",
+    // value,
+    // setValue,
     ...props
   },
   ref
@@ -23,6 +25,8 @@ const Input = (
         id={label}
         title={label}
         className={`outline-none border w-full flex-1 ${className}`}
+        // value={value}
+        // onChange={(e) => setValue(e.target.value)}
         {...props}
         ref={ref}
       />

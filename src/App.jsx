@@ -9,6 +9,7 @@ import {
   replaceAllPosts,
   showLoginPopup,
   toggleMenu,
+  updateUserMainData,
 } from "./features";
 import dbService from "./appwrite/databaseService";
 import { Watch } from "react-loader-spinner";
@@ -26,13 +27,13 @@ const App = () => {
     (async function () {
       try {
         const userData = await authService.getUser();
+        console.log(userData);
         if (userData) {
           dispatch(login(userData));
         } else {
           dispatch(logout());
           navigate("/");
         }
-        dispatch(toggleMenu(false));
         // todo : in future I will get all documents by using queries
         const allDocs = await dbService.getAllDocs();
         if (allDocs) {
@@ -45,6 +46,15 @@ const App = () => {
           //   dispatch(addAllPostReact(postsReacts.documents));
           // }
         }
+        const res = await dbService.getAllUserDataByUserId(userData);
+        if (res) {
+          // console.log(userData);
+          const { name, email, phone } = userData;
+          const prepareData = { ...res.documents[0], name, email, phone };
+          // console.log(prepareData);
+          dispatch(updateUserMainData(prepareData));
+        }
+        dispatch(toggleMenu(false));
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -65,20 +75,6 @@ const App = () => {
     </div>
   ) : (
     <PreLoader />
-    // <div className="w-full h-screen relative">
-    //   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-    //     <Watch
-    //       height="80"
-    //       width="80"
-    //       radius="48"
-    //       color="#4fa94d"
-    //       ariaLabel="watch-loading"
-    //       wrapperStyle={{}}
-    //       wrapperClassName=""
-    //       visible={true}
-    //     />
-    //   </div>
-    // </div>
   );
 };
 

@@ -4,6 +4,7 @@ import authReducer, {
   toggleMenu,
   updateData,
   showLoginPopup,
+  updateUserMainData,
 } from "./authSlice";
 import loadingReducer, { start, end } from "./loadingSlice";
 import editorReducer, { open, close } from "./editorSlice";
@@ -20,7 +21,8 @@ import postReducer, {
   collectPost,
   deleteCollectedPost,
   addLabel,
-  removeLabel,addCategories
+  removeLabel,
+  addCategories,
 } from "./postSlice";
 
 export {
@@ -39,6 +41,7 @@ export {
   replaceAllPosts,
   addPostsById,
   showLoginPopup,
+  updateUserMainData,
   setCurrentPost,
   addClaps,
   toggleActionPage,
@@ -47,5 +50,6 @@ export {
   collectPost,
   deleteCollectedPost,
   addLabel,
-  removeLabel,addCategories
+  removeLabel,
+  addCategories,
 };

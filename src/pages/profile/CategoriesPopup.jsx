@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Container, FixedPage } from "../../components";
+import { Container, FixedPage, PopupPage, SubmitBtn } from "../../components";
 import { xmark } from "../../assets";
-import { useDispatch } from "react-redux";
-import { toggleActionPage } from "../../features";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleActionPage, updateUserMainData } from "../../features";
+import dbService from "../../appwrite/databaseService";
+import { Oval } from "react-loader-spinner";
 
 const CategoriesPopup = () => {
+  const [updating, setUpdating] = useState(false);
   const [allCategories, setAllCategories] = useState([]);
   const [chosenCategories, setChosenCategories] = useState([]);
   const dispatch = useDispatch();
+  const { userMainData, userData } = useSelector((store) => store.auth);
   const categories = [
     "Developer",
     "Programmer",
@@ -150,6 +154,40 @@ const CategoriesPopup = () => {
     "Email Newsletter Marketing",
   ];
 
+  const updateCategoriesList = async () => {
+    try {
+      setUpdating(true);
+      if (userMainData) {
+        const prepareData = {};
+        for (let key in userMainData) {
+          if (key[0] === "$") continue;
+          prepareData[key] = userMainData[key];
+        }
+        prepareData.categories = chosenCategories;
+        const res = await dbService.updateUserData(
+          userMainData.$id,
+          prepareData
+        );
+        if (res) {
+          dispatch(updateUserMainData(res));
+        }
+      } else {
+        const prepareData = {
+          userId: userData.$id,
+          categories: chosenCategories,
+        };
+        const res = await dbService.createUserData(prepareData);
+        if (res) {
+          dispatch(updateUserMainData(res));
+        }
+      }
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      setUpdating(false);
+    }
+  };
+
   const selectCategories = (category) => {
     if (chosenCategories.length >= 10 || chosenCategories.includes(category))
       return;
@@ -166,45 +204,50 @@ const CategoriesPopup = () => {
     );
   }, [chosenCategories.length]);
 
-  return (
-    <FixedPage>
-      <Container
-        maxWidth="max-w-3xl"
-        className="text-black bg-white/70 h-[90%] overflow-auto px-5 py-5 backdrop-grayscale  border flex flex-col gap-5 rounded"
-      >
-        <button
-          className="ml-auto"
-          onClick={() => dispatch(toggleActionPage(false))}
-        >
-          {xmark}
-        </button>
+  useEffect(() => {
+    if (userMainData) {
+      setChosenCategories(userMainData.categories);
+    }
+  }, []);
 
-        <h1 className="text-center text-2xl font-bold">
-          Choose categories in which you interested
-        </h1>
-        {chosenCategories.length > 0 && (
-          <div>Total {chosenCategories.length} of 10</div>
-        )}
-        <div className="categories border-t border-b py-4 overflow-auto flex gap-3 flex-wrap items-start justify-start">
-          {allCategories.map(({ category, chooses }) => (
-            <button
-              key={category}
-              className={`px-3 py-1 border rounded-full active:scale-95 transition-all text-sm ${
-                chooses
-                  ? "border-green-400 bg-green-400 text-white"
-                  : "active:bg-zinc-300/30"
-              }`}
-              onClick={() => selectCategories(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-        <button className="px-6 py-2 rounded-full text-white bg-green-500 active:bg-green-600 active:scale-95 transition-all self-end mt-auto">
-          save
-        </button>
-      </Container>
-    </FixedPage>
+  return (
+    <PopupPage>
+      <button
+        className="ml-auto"
+        onClick={() => dispatch(toggleActionPage(false))}
+      >
+        {xmark}
+      </button>
+
+      <h1 className="text-center text-2xl font-bold">
+        Choose categories in which you interested
+      </h1>
+      {chosenCategories.length > 0 && (
+        <div>Total {chosenCategories.length} of 10</div>
+      )}
+      <div className="categories border-t border-b py-4 overflow-auto flex gap-3 flex-wrap items-start justify-start">
+        {allCategories.map(({ category, chooses }) => (
+          <button
+            key={category}
+            className={`px-3 py-1 border rounded-full active:scale-95 transition-all text-sm ${
+              chooses
+                ? "border-green-400 bg-green-400 text-white"
+                : "active:bg-zinc-300/30"
+            }`}
+            onClick={() => selectCategories(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      <SubmitBtn
+        type="submit"
+        loading={updating}
+        handleClick={updateCategoriesList}
+      >
+        Save
+      </SubmitBtn>
+    </PopupPage>
   );
 };
 
