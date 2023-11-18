@@ -27,7 +27,6 @@ const App = () => {
     (async function () {
       try {
         const userData = await authService.getUser();
-        console.log(userData);
         if (userData) {
           dispatch(login(userData));
         } else {
@@ -35,6 +34,7 @@ const App = () => {
           navigate("/");
         }
         // todo : in future I will get all documents by using queries
+        // get all posts when app mount
         const allDocs = await dbService.getAllDocs();
         if (allDocs) {
           dispatch(replaceAllPosts(allDocs.documents));
@@ -46,13 +46,24 @@ const App = () => {
           //   dispatch(addAllPostReact(postsReacts.documents));
           // }
         }
+        // get user all main data when app is starting
         const res = await dbService.getAllUserDataByUserId(userData);
-        if (res) {
-          // console.log(userData);
-          const { name, email, phone } = userData;
-          const prepareData = { ...res.documents[0], name, email, phone };
-          // console.log(prepareData);
-          dispatch(updateUserMainData(prepareData));
+        const { $id, name, email, phone } = userData;
+        // console.log(res.documents);
+        if (res.documents.length) {
+          // console.log("this user has user main data");
+          dispatch(updateUserMainData(res.documents[0]));
+        } else {
+          // console.log("this user has not user main data");
+          // user has not user main data, create it
+          const userMainData = await dbService.createUserData({
+            name,
+            email,
+            phone,
+            userId: $id,
+          });
+          // console.log(userMainData);
+          dispatch(updateUserMainData(userMainData));
         }
         dispatch(toggleMenu(false));
       } catch (error) {

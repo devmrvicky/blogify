@@ -105,7 +105,7 @@ class DbService {
     }
   }
 
-  // create user data documents like user'chosen categories and user's followers, user's following
+  // create user data documents like user'chosen categories and user's followers, user's following (here user data as user main data)
   async createUserData(data, uniqueId = ID.unique()) {
     try {
       return await this.databases.createDocument(
@@ -135,6 +135,7 @@ class DbService {
 
   // update user data
   async updateUserData(userDataId, updatedData) {
+    console.log(userDataId, updatedData);
     try {
       return await this.databases.updateDocument(
         env.appwriteDatabaseId,
@@ -149,42 +150,19 @@ class DbService {
   }
 
   // upload file
-  async uploadFile(file) {
+
+  async uploadFile(file, bucketId = env.appwriteProfileImgBucketId) {
     try {
-      return await this.storage.createFile(
-        env.appwriteProfileImgBucketId,
-        ID.unique(),
-        file
-      );
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-  async uploadBgImg(file) {
-    try {
-      return await this.storage.createFile(
-        env.appwriteBgImgBucketId,
-        ID.unique(),
-        file
-      );
+      return await this.storage.createFile(bucketId, ID.unique(), file);
     } catch (error) {
       console.log(error.message);
     }
   }
 
   // delete file
-  async deleteFile(fileId) {
+  async deleteFile(fileId, bucketId = env.appwriteProfileImgBucketId) {
     try {
-      await this.storage.deleteFile(env.appwriteProfileImgBucketId, fileId);
-      return true;
-    } catch (error) {
-      console.log(error.message);
-      return false;
-    }
-  }
-  async deleteBgImg(fileId) {
-    try {
-      await this.storage.deleteFile(env.appwriteBgImgBucketId, fileId);
+      await this.storage.deleteFile(bucketId, fileId);
       return true;
     } catch (error) {
       console.log(error.message);
@@ -193,11 +171,8 @@ class DbService {
   }
 
   // get file preview
-  filePreview(fileId) {
-    return this.storage.getFilePreview(env.appwriteProfileImgBucketId, fileId);
-  }
-  previewBgImg(fileId) {
-    return this.storage.getFilePreview(env.appwriteBgImgBucketId, fileId);
+  filePreview(fileId, bucketId = env.appwriteProfileImgBucketId) {
+    return this.storage.getFilePreview(bucketId, fileId);
   }
 }
 

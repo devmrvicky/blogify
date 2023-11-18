@@ -35,7 +35,7 @@ const Profile = () => {
             web and mobile applications, proficient in front-end and back-end
             technologies. */}
           </p>
-          {email && <ProfileField field="Email" value={email} />}
+          <ProfileField field="Email" value={email} />
           {phone && <ProfileField field="Phone" value={phone} />}
           {interestedIn && (
             <ProfileField field="Interested in" value={interestedIn} />

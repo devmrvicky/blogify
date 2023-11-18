@@ -19,6 +19,7 @@ import PersonalSettings from "./profile/PersonalSettings";
 import SettingLists from "./profile/SettingLists";
 import CategoriesLists from "./profile/CategoriesLists";
 import NameSetting from "./profile/NameSetting";
+import EmailPasswordSetting from "./profile/EmailPasswordSetting";
 
 export {
   Home,
@@ -40,5 +41,5 @@ export {
   SettingLists,
   Preferences,
   PersonalSettings,
-  CategoriesLists,NameSetting
+  CategoriesLists,NameSetting, EmailPasswordSetting
 };

@@ -26,13 +26,13 @@ const Categories = () => {
   }, [userMainData?.categories?.length]);
 
   return (
-    <div className="w-full max-w-3xl overflow-auto mt-5">
+    <div className="w-full max-w-3xl overflow-auto mt-5 max-[440px]:hidden ">
       <div
         className="flex items-center gap-2 w-full"
         onMouseMove={handleMouseMove}
       >
         <div className="categories-menu w-full flex items-center gap-5 pb-[3px] border-b overflow-hidden">
-          {categories.length ? (
+          {categories && categories.length ? (
             categories.map((menu) => (
               <NavLinks
                 name={menu}
@@ -41,10 +41,10 @@ const Categories = () => {
               />
             ))
           ) : (
-            <div className="flex justify-between items-center w-full py-2">
+            <div className="flex justify-between items-center w-full py-2 max-[540px]:text-sm max-[480px]:text-xs">
               <p>Choose categories For the best experience</p>
               <button
-                className="bg-green-400 text-white px-4 py-2 rounded-full active:bg-green-500 active:scale-95 transition-all"
+                className="bg-green-400 text-white px-4 py-2 rounded-full active:bg-green-500 active:scale-95 transition-all max-[580px]:text-xs"
                 onClick={openCategoryPage}
               >
                 Choose categories

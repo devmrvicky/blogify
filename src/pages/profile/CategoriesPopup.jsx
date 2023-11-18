@@ -157,30 +157,27 @@ const CategoriesPopup = () => {
   const updateCategoriesList = async () => {
     try {
       setUpdating(true);
-      if (userMainData) {
-        const prepareData = {};
-        for (let key in userMainData) {
-          if (key[0] === "$") continue;
-          prepareData[key] = userMainData[key];
-        }
-        prepareData.categories = chosenCategories;
-        const res = await dbService.updateUserData(
-          userMainData.$id,
-          prepareData
-        );
-        if (res) {
-          dispatch(updateUserMainData(res));
-        }
-      } else {
-        const prepareData = {
-          userId: userData.$id,
-          categories: chosenCategories,
-        };
-        const res = await dbService.createUserData(prepareData);
-        if (res) {
-          dispatch(updateUserMainData(res));
-        }
+      // if (userMainData) {
+      const prepareData = {};
+      for (let key in userMainData) {
+        if (key[0] === "$") continue;
+        prepareData[key] = userMainData[key];
       }
+      prepareData.categories = chosenCategories;
+      const res = await dbService.updateUserData(userMainData.$id, prepareData);
+      if (res) {
+        dispatch(updateUserMainData(res));
+      }
+      // } else {
+      //   const prepareData = {
+      //     userId: userData.$id,
+      //     categories: chosenCategories,
+      //   };
+      //   const res = await dbService.createUserData(prepareData);
+      //   if (res) {
+      //     dispatch(updateUserMainData(res));
+      //   }
+      // }
     } catch (error) {
       console.error(error.message);
     } finally {

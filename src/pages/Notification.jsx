@@ -41,7 +41,7 @@ const Notification = () => {
       <Container className="py-5 h-full">
         <h1 className="text-3xl py-4 ">Notification</h1>
         <div className="max-w-2xl">
-          <div className="notification-menu flex items-center gap-5 border-b">
+          <div className="notification-menu flex items-center gap-5 border-b pb-0.5">
             {notificationMenus.map((menu) => (
               <NavLinks {...menu} key={menu.name} />
             ))}

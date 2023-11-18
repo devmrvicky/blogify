@@ -33,7 +33,6 @@ const authSlice = createSlice({
       state.loginPopup = action.payload;
     },
     updateUserMainData: (state, action) => {
-      console.log(action.payload);
       state.userMainData = action.payload;
     },
   },

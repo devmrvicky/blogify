@@ -30,4 +30,5 @@ export const {
   curlyBracketIcon,
   categoryIcon,
   avatarIcon,
+  email,
 } = svgIcons;

@@ -109,7 +109,7 @@ const svgIcons = {
       width="38"
       height="38"
       viewBox="0 0 38 38"
-      fill="none"
+      fill="black"
       className="acz yl ym"
     >
       <rect x="26.25" y="9.25" width="0.5" height="6.5" rx="0.25"></rect>

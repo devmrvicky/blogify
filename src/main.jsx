@@ -17,6 +17,7 @@ import {
   Contact,
   Dashboard,
   EditPost,
+  EmailPasswordSetting,
   Home,
   IndividualPost,
   Login,
@@ -54,6 +55,10 @@ const router = createBrowserRouter(
           <Route
             path="/me/personal-settings/profile"
             element={<NameSetting />}
+          />
+          <Route
+            path="/me/personal-settings/email-password"
+            element={<EmailPasswordSetting />}
           />
         </Route>
       </Route>
