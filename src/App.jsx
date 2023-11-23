@@ -49,10 +49,12 @@ const App = () => {
         // get user all main data when app is starting
         const res = await dbService.getAllUserDataByUserId(userData);
         const { $id, name, email, phone } = userData;
-        // console.log(res.documents);
+        const myPosts = allDocs.documents
+          .filter((doc) => doc.authorId === userData.$id)
+          .map((doc) => (doc.$id ? doc.$id : ""));
         if (res.documents.length) {
           // console.log("this user has user main data");
-          dispatch(updateUserMainData(res.documents[0]));
+          dispatch(updateUserMainData({ ...res.documents[0], posts: myPosts }));
         } else {
           // console.log("this user has not user main data");
           // user has not user main data, create it
@@ -61,6 +63,7 @@ const App = () => {
             email,
             phone,
             userId: $id,
+            posts: myPosts,
           });
           // console.log(userMainData);
           dispatch(updateUserMainData(userMainData));

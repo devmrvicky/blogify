@@ -19,6 +19,7 @@ const Profile = () => {
     contactInfo,
     website,
     userId,
+    posts,
   } = userMainData;
   // console.log(userMainData);
 
@@ -46,7 +47,7 @@ const Profile = () => {
           {website && <ProfileField field="Website" value={website} />}
           <div className="stats flex gap-2 items-center justify-around mt-5 border-t py-7">
             <div className="flex flex-col  items-center">
-              <span className="text-lg">100</span>
+              <span className="text-lg">{posts.length}</span>
               <span className="text-xs text-zinc-500">Posts</span>
             </div>
             <div className="flex flex-col  items-center">

@@ -3,7 +3,11 @@ import dbService from "../../appwrite/databaseService";
 import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "react-loader-spinner";
 import { PostCard, PostCtrlBtn } from "../../components";
-import { addPostsById, replaceAllPosts } from "../../features";
+import {
+  addPostsById,
+  replaceAllPosts,
+  updateUserMainData,
+} from "../../features";
 import {
   eyeHide,
   eyeIcon,
@@ -19,20 +23,33 @@ const Posts = () => {
   const [btnAction, setBtnAction] = useState({
     delete: false,
   });
-  const { userData } = useSelector((store) => store.auth);
+  const { userData, userMainData } = useSelector((store) => store.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { postsById, allPosts, isPageOpen } = useSelector(
-    (store) => store.posts
-  );
+  const { postsById, allPosts } = useSelector((store) => store.posts);
 
   const deletePost = async (postId) => {
     try {
       // delete post logic
       setBtnAction((prev) => ({ ...prev, delete: true }));
-      const res = await dbService.deletePost(postId);
+      const allRemainingPosts = await dbService.deletePost(postId);
+      if (allRemainingPosts) {
+        dispatch(replaceAllPosts(allRemainingPosts.documents));
+      }
+      // console.log(allRemainingPosts.documents);
+      const myPosts = allRemainingPosts.documents
+        .filter((doc) => doc.authorId === userData.$id)
+        .map((doc) => (doc.$id ? doc.$id : ""));
+      const prepareData = {};
+      for (let key in userMainData) {
+        if (key[0] === "$") continue;
+        prepareData[key] = userMainData[key];
+      }
+      prepareData.posts = [...myPosts];
+      // console.log(prepareData);
+      const res = await dbService.updateUserData(userMainData.$id, prepareData);
       if (res) {
-        dispatch(replaceAllPosts(res.documents));
+        dispatch(updateUserMainData(res));
       }
     } catch (error) {
       console.log(error.message);

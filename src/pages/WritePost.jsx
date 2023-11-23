@@ -12,6 +12,7 @@ import {
   setSlug,
   replaceAllPosts,
   addCategories,
+  updateUserMainData,
 } from "../features";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -31,8 +32,9 @@ const WritePost = ({ post }) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { $id, name } = useSelector((store) => store.auth.userData);
-  const { slug, categories, selectedLabels } = useSelector(
+  const { userData, userMainData } = useSelector((store) => store.auth);
+  const { $id, name } = userData;
+  const { allPosts, slug, categories, selectedLabels } = useSelector(
     (store) => store.posts
   );
   const postSlug = watch("title").split(" ").join("-");
@@ -63,9 +65,11 @@ const WritePost = ({ post }) => {
         labels: selectedLabels,
       };
       if (post) {
+        console.log(post);
         const updatedPosts = await dbService.updatePost(post.$id, prepareData);
         if (updatedPosts) {
           dispatch(replaceAllPosts(updatedPosts.documents));
+          // console.log(allPosts);
           navigate(`/${$id}/${postSlug}`);
           return;
         }
@@ -75,6 +79,20 @@ const WritePost = ({ post }) => {
           dispatch(add(postData));
           const authorId = $id;
           navigate(`/${authorId}/${postSlug}`);
+          const prepareData = {};
+          for (let key in userMainData) {
+            if (key[0] === "$") continue;
+            prepareData[key] = userMainData[key];
+          }
+          prepareData.posts = [...prepareData.posts, postData.$id];
+          // console.log(prepareData);
+          const res = await dbService.updateUserData(
+            userMainData.$id,
+            prepareData
+          );
+          if (res) {
+            dispatch(updateUserMainData(res));
+          }
         }
       }
     } catch (error) {

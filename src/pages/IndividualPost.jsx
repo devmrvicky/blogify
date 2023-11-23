@@ -8,7 +8,7 @@ import dbService from "../appwrite/databaseService";
 const IndividualPost = () => {
   const { authorId, postSlug } = useParams();
   const { allPosts, isPageOpen } = useSelector((store) => store.posts);
-
+  // console.log(allPosts);
   const post = allPosts.find(
     (post) => post.authorId === authorId && post.postSlug === postSlug
   );

@@ -66,33 +66,8 @@ const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
-    add: {
-      reducer: (state, action) => {
-        state.allPosts.push(action.payload);
-      },
-      prepare: ({
-        title,
-        article,
-        authorName,
-        authorId,
-        readTime,
-        $id,
-        $createdAt,
-        postSlug,
-      }) => {
-        return {
-          payload: {
-            title,
-            article,
-            authorId,
-            authorName,
-            readTime,
-            $id,
-            $createdAt,
-            postSlug,
-          },
-        };
-      },
+    add: (state, action) => {
+      state.allPosts.push(action.payload);
     },
     replaceAllPosts: (state, action) => {
       state.allPosts = action.payload;

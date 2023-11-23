@@ -73,7 +73,7 @@ class DbService {
       );
       return await this.getAllDocs();
     } catch (error) {
-      console.log(error.message);
+      console.error("error from update post : " + error.message);
     }
   }
 
