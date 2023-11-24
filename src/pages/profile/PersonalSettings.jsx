@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { profileIcon, email } from "../../assets";
+import { profileIcon, email, urlIcon } from "../../assets";
 import SettingLayout from "./SettingLayout";
 import NavLinks from "../../components/NavLinks";
 

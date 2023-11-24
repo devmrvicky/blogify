@@ -727,6 +727,47 @@ const svgIcons = {
       </g>
     </svg>
   ),
+  shareIcon: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      focusable="false"
+      style={{
+        pointerEvents: "none",
+        display: "block",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <path d="M15 5.63 20.66 12 15 18.37V14h-1c-3.96 0-7.14 1-9.75 3.09 1.84-4.07 5.11-6.4 9.89-7.1l.86-.13V5.63M14 3v6C6.22 10.13 3.11 15.33 2 21c2.78-3.97 6.44-6 12-6v6l8-9-8-9z"></path>
+    </svg>
+  ),
+  urlIcon: (
+    <svg
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      stroke="#000000"
+      width="24"
+      height="24"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M52 19.17a39.79 39.79 0 0 1-20 5.33 39.79 39.79 0 0 1-20-5.33"></path>
+        <path d="M12 44.88a40 40 0 0 1 39.92 0"></path>
+        <path d="M29 56a40 40 0 0 1 0-48"></path>
+        <path d="M35 8a40 40 0 0 1 0 48"></path>
+        <circle cx="32" cy="32" r="24"></circle>
+      </g>
+    </svg>
+  ),
 };
 
 export default svgIcons;

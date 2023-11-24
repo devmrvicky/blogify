@@ -6,6 +6,7 @@ const Input = (
     label,
     className = "px-3 py-2",
     labelStyle = "text-xl font-semibold",
+    dis = false,
     // value,
     // setValue,
     ...props
@@ -30,6 +31,7 @@ const Input = (
         {...props}
         ref={ref}
       />
+      {dis && <p className="text-xs text-zinc-500">{dis}</p>}
     </div>
   );
 };

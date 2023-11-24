@@ -31,4 +31,6 @@ export const {
   categoryIcon,
   avatarIcon,
   email,
+  shareIcon,
+  urlIcon,
 } = svgIcons;

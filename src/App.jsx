@@ -47,14 +47,25 @@ const App = () => {
           // }
         }
         // get user all main data when app is starting
-        const res = await dbService.getAllUserDataByUserId(userData);
+        const res = await dbService.getAllUserDataByUserId(userData.$id);
         const { $id, name, email, phone } = userData;
-        const myPosts = allDocs.documents
-          .filter((doc) => doc.authorId === userData.$id)
-          .map((doc) => (doc.$id ? doc.$id : ""));
+        const myPosts = allDocs.documents.filter(
+          (doc) => doc.authorId === userData.$id
+        );
+        const myPostsIds = myPosts.map((doc) => (doc.$id ? doc.$id : ""));
+        const totalClaps = myPosts
+          .filter((post) => post.whoClaps.length)
+          .map((post) => (post.whoClaps ? post.whoClaps : ""))
+          .flatMap((item) => (Array.isArray(item) ? item : [item]));
         if (res.documents.length) {
           // console.log("this user has user main data");
-          dispatch(updateUserMainData({ ...res.documents[0], posts: myPosts }));
+          dispatch(
+            updateUserMainData({
+              ...res.documents[0],
+              posts: myPostsIds,
+              claps: totalClaps,
+            })
+          );
         } else {
           // console.log("this user has not user main data");
           // user has not user main data, create it
@@ -63,7 +74,8 @@ const App = () => {
             email,
             phone,
             userId: $id,
-            posts: myPosts,
+            posts: myPostsIds,
+            claps: totalClaps,
           });
           // console.log(userMainData);
           dispatch(updateUserMainData(userMainData));

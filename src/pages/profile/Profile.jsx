@@ -20,6 +20,9 @@ const Profile = () => {
     website,
     userId,
     posts,
+    followers,
+    following,
+    claps,
   } = userMainData;
   // console.log(userMainData);
 
@@ -51,15 +54,15 @@ const Profile = () => {
               <span className="text-xs text-zinc-500">Posts</span>
             </div>
             <div className="flex flex-col  items-center">
-              <span className="text-lg">100k</span>
+              <span className="text-lg">{followers.length}</span>
               <span className="text-xs text-zinc-500">Followers</span>
             </div>
             <div className="flex flex-col  items-center">
-              <span className="text-lg">100</span>
+              <span className="text-lg">{following.length}</span>
               <span className="text-xs text-zinc-500">Following</span>
             </div>
             <div className="flex flex-col  items-center">
-              <span className="text-lg">10m</span>
+              <span className="text-lg">{claps.length}</span>
               <span className="text-xs text-zinc-500">claps</span>
             </div>
           </div>

@@ -20,6 +20,8 @@ const FullPost = ({
       <Container maxWidth="max-w-3xl">
         <h1 className="text-3xl font-semibold">{title}</h1>
         <Author
+          authorId={authorId}
+          $id={$id}
           authorName={authorName}
           readTime={readTime}
           $createdAt={$createdAt}

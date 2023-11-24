@@ -19,6 +19,12 @@ const SettingLists = () => {
           icon={curlyBracketIcon}
           path="/me/preferences"
         />
+        {/* <SettingCard
+          settingName={"user preference"}
+          details="preferences"
+          icon={curlyBracketIcon}
+          path="/me/preferences"
+        /> */}
       </div>
     </div>
   );

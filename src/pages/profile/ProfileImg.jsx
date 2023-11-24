@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleActionPage, updateUserMainData } from "../../features";
-import { avatarIcon, penIcon } from "../../assets";
+import { avatarIcon, penIcon, shareIcon } from "../../assets";
 import dbService from "../../appwrite/databaseService";
 import { Oval } from "react-loader-spinner";
 import { FaPenAlt } from "react-icons/fa";
@@ -142,10 +142,10 @@ const ProfileImg = ({ editableProfile = false }) => {
       )}
       {!editableProfile && (
         <button
-          className="rounded-full w-12 h-12 active:bg-zinc-200/20 flex items-center justify-center absolute -bottom-16 right-0"
-          onClick={() => dispatch(toggleActionPage({ profileEditPage: true }))}
+          className="rounded-full w-12 h-12 active:bg-zinc-200/20 flex items-center justify-center absolute -bottom-16 right-2"
+          // onClick={() => dispatch(toggleActionPage({ profileEditPage: true }))}
         >
-          <span className="active:scale-95 transition-all">{penIcon}</span>
+          <span className="active:scale-95 transition-all">{shareIcon}</span>
         </button>
       )}
     </div>

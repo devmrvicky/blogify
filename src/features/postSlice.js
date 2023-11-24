@@ -103,6 +103,7 @@ const postSlice = createSlice({
         categoryPopup = false,
         mainProfilePage = false,
         profileEditPage = false,
+        setUserNameUrlPage = false,
       }) => {
         return {
           payload: {
@@ -113,6 +114,7 @@ const postSlice = createSlice({
             categoryPopup,
             mainProfilePage,
             profileEditPage,
+            setUserNameUrlPage,
           },
         };
       },

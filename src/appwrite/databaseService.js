@@ -120,13 +120,13 @@ class DbService {
   }
 
   // get user data on the bases of user id
-  async getAllUserDataByUserId({ $id }) {
-    // console.log($id);
+  async getAllUserDataByUserId(userId) {
+    // console.log(userId);
     try {
       return await this.databases.listDocuments(
         env.appwriteDatabaseId,
         env.appwriteUserDataCollectionId,
-        [Query.equal("userId", $id)]
+        [Query.equal("userId", userId)]
       );
     } catch (error) {
       console.log(error.message);

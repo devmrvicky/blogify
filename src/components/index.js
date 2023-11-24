@@ -35,6 +35,7 @@ import CategoryPosts from "./CategoryPosts";
 import SettingCard from "./settings/SettingCard";
 import FixedPage from "./FixedPage";
 import PopupPage from "./PopupPage";
+import SetProfileUrlBtn from "./SetProfileUrlBtn";
 
 export {
   Header,
@@ -74,4 +75,5 @@ export {
   FixedPage,
   PopupPage,
   SubmitBtn,
+  SetProfileUrlBtn,
 };
