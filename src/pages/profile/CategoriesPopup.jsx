@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleActionPage, updateUserMainData } from "../../features";
 import dbService from "../../appwrite/databaseService";
 import { Oval } from "react-loader-spinner";
+import { removeDollarSign } from "../../common-methods";
 
 const CategoriesPopup = () => {
   const [updating, setUpdating] = useState(false);
@@ -158,11 +159,7 @@ const CategoriesPopup = () => {
     try {
       setUpdating(true);
       // if (userMainData) {
-      const prepareData = {};
-      for (let key in userMainData) {
-        if (key[0] === "$") continue;
-        prepareData[key] = userMainData[key];
-      }
+      const prepareData = removeDollarSign(userMainData);
       prepareData.categories = chosenCategories;
       const res = await dbService.updateUserData(userMainData.$id, prepareData);
       if (res) {

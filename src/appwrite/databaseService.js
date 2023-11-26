@@ -119,6 +119,18 @@ class DbService {
     }
   }
 
+  // get all user data
+  async getAllUserMainData() {
+    try {
+      return await this.databases.listDocuments(
+        env.appwriteDatabaseId,
+        env.appwriteUserDataCollectionId
+      );
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
   // get user data on the bases of user id
   async getAllUserDataByUserId(userId) {
     // console.log(userId);

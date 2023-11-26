@@ -37,6 +37,7 @@ const Dashboard = () => {
   ];
 
   useEffect(() => {
+    // console.log("Dashboard also running.")
     (async function () {
       try {
         // dispatch(start());
@@ -45,7 +46,9 @@ const Dashboard = () => {
           setLoggedIn(true);
           setAuthorName(userData.name);
         } else {
-          navigate("/");
+          if (authorId[0] !== "@") {
+            navigate("/");
+          }
         }
       } catch (error) {
         console.log(error.message);
@@ -53,7 +56,7 @@ const Dashboard = () => {
         dispatch(end());
       }
     })();
-  });
+  }, []);
 
   useEffect(() => {
     dispatch(toggleActionPage({ dashboardSidebar: false }));

@@ -5,6 +5,7 @@ import authReducer, {
   updateData,
   showLoginPopup,
   updateUserMainData,
+  updateAllUserMainData
 } from "./authSlice";
 import loadingReducer, { start, end } from "./loadingSlice";
 import editorReducer, { open, close } from "./editorSlice";
@@ -52,4 +53,5 @@ export {
   addLabel,
   removeLabel,
   addCategories,
+  updateAllUserMainData,
 };

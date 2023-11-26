@@ -29,6 +29,7 @@ import {
   Posts,
   Preferences,
   Profile,
+  RedirectionPage,
   SettingLists,
   Signup,
   WritePost,
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
       <Route path="/contact-us" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      {/* <Route path="/:" element={<Me />}/> */}
       <Route path="/me" element={<Me />}>
         <Route path="/me" element={<Profile />} />
         <Route path="/me/preferences" element={<Preferences />}>
@@ -65,7 +67,7 @@ const router = createBrowserRouter(
       <Route path="/:authorId/notification" element={<Notification />} />
       <Route path="/:authorId/:postSlug/edit" element={<EditPost />} />
       <Route path="/:authorId/:postSlug" element={<IndividualPost />} />
-      <Route path="/:authorId" element={<Dashboard />}>
+      <Route path="/:authorId" element={<RedirectionPage />}>
         <Route path="/:authorId" element={<Overview />} />
         <Route path="/:authorId/posts" element={<Posts />} />
         <Route path="/:authorId/collections" element={<Collections />} />

@@ -7,14 +7,14 @@ import { Oval } from "react-loader-spinner";
 import { FaPenAlt } from "react-icons/fa";
 import env from "../../env/env";
 
-const ProfileImg = ({ editableProfile = false }) => {
+const ProfileImg = ({ editableProfile = false, userMainData = {} }) => {
   const [updating, setUpdating] = useState(false);
   const [img, setImg] = useState(null);
   const [backgroundImg, setBackgroundImg] = useState(
     "https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   );
   const dispatch = useDispatch();
-  const { userMainData } = useSelector((store) => store.auth);
+  // const { userMainData } = useSelector((store) => store.auth);
   const { profileImg, bgImg } = userMainData;
 
   const handleFileUpload = async (e, field, fileId, bucketId) => {

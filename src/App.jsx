@@ -9,6 +9,7 @@ import {
   replaceAllPosts,
   showLoginPopup,
   toggleMenu,
+  updateAllUserMainData,
   updateUserMainData,
 } from "./features";
 import dbService from "./appwrite/databaseService";
@@ -47,6 +48,11 @@ const App = () => {
           // }
         }
         // get user all main data when app is starting
+        const allUserMainData = await dbService.getAllUserMainData();
+        if (allUserMainData.documents.length) {
+          dispatch(updateAllUserMainData(allUserMainData.documents));
+        }
+        // get user main data by user id for individual user
         const res = await dbService.getAllUserDataByUserId(userData.$id);
         const { $id, name, email, phone } = userData;
         const myPosts = allDocs.documents.filter(

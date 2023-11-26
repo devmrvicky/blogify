@@ -3,6 +3,7 @@ import { forwardRef } from "react";
 const Input = (
   {
     type = "text",
+    name,
     label,
     className = "px-3 py-2",
     labelStyle = "text-xl font-semibold",
@@ -22,7 +23,7 @@ const Input = (
       )}
       <input
         type={type}
-        name={label}
+        name={name || label}
         id={label}
         title={label}
         className={`outline-none border w-full flex-1 ${className}`}
