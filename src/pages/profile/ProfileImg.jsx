@@ -54,6 +54,26 @@ const ProfileImg = ({ editableProfile = false, userMainData = {} }) => {
     }
   };
 
+  const shareProfile = async () => {
+    try {
+      if (!userMainData.profileUrl) {
+        alert("First create profile url for share profile");
+        return;
+      }
+      if (navigator.share) {
+        await navigator.share({
+          title: userMainData.name,
+          text: "Check out this link:",
+          url: userMainData.profileUrl,
+        });
+      } else {
+        throw new Error("Web Share API not supported.");
+      }
+    } catch (error) {
+      console.error("Error sharing:", error.message);
+    }
+  };
+
   useEffect(() => {
     if (profileImg) {
       // fetch profile img url
@@ -143,7 +163,7 @@ const ProfileImg = ({ editableProfile = false, userMainData = {} }) => {
       {!editableProfile && (
         <button
           className="rounded-full w-12 h-12 active:bg-zinc-200/20 flex items-center justify-center absolute -bottom-16 right-2"
-          // onClick={() => dispatch(toggleActionPage({ profileEditPage: true }))}
+          onClick={shareProfile}
         >
           <span className="active:scale-95 transition-all">{shareIcon}</span>
         </button>
