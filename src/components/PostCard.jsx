@@ -2,7 +2,7 @@ import React from "react";
 import { FaUser } from "react-icons/fa";
 import { bookmark, filledBookmarkIcon, sample } from "../assets";
 import { Link } from "react-router-dom";
-import useFormateDistanceDate from "../formatDistance";
+import useFormateDistanceDate from "../common-methods/formatDistance";
 import parse from "html-react-parser";
 import { useDispatch, useSelector } from "react-redux";
 import { collectPost, deleteCollectedPost } from "../features";

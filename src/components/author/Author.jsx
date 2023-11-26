@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
-import useFormateDistanceDate from "../../formatDistance";
 import dbService from "../../appwrite/databaseService";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserMainData } from "../../features";
-import removeDollarSign from "../../RemoveDollarSign";
+import {removeDollarSign, formateDistance as useFormateDistanceDate} from "../../common-methods";
 import { Oval } from "react-loader-spinner";
 
 const Author = ({
