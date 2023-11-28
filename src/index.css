@@ -6,3 +6,7 @@
   font-family: 'gt-super-regular';
   src: url(./font/GT-Super-Display-Regular-Trial.otf);
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
